@@ -1,0 +1,147 @@
+<script type="module">
+  import storyPreview from "/assets/images/stories/preview.webp"
+  import storyImage1 from "/assets/images/stories/1.webp"
+  import storyAvatar from "/assets/images/stories/avatar.webp"
+
+  window.__REELS_MOCK__ = [
+    {
+      id: "reel-1",
+      title: "Семейный ужин",
+      text: "Семейный ужин",
+      avatar: storyAvatar,
+      preview: storyPreview,
+      items: [{ src: storyImage1, duration: 5000 }],
+      buttonText: "Оставить заявку",
+      buttonLink: "",
+      buttonHasLink: "0",
+    },
+    {
+      id: "reel-2",
+      title: "Тепло, вкусно, по-семейному",
+      text: "Тепло, вкусно, по-семейному",
+      avatar: storyAvatar,
+      preview: storyPreview,
+      items: [{ src: storyImage1, duration: 5000 }],
+      buttonText: "Оставить заявку",
+      buttonLink: "",
+      buttonHasLink: "0",
+    },
+    {
+      id: "reel-3",
+      title: "Тепло, вкусно, по-семейному",
+      text: "Тепло, вкусно, по-семейному",
+      avatar: storyAvatar,
+      preview: storyPreview,
+      items: [{ src: storyImage1, duration: 5000 }],
+      buttonText: "Оставить заявку",
+      buttonLink: "",
+      buttonHasLink: "0",
+    },
+    {
+      id: "reel-4",
+      title: "Тепло, вкусно, по-семейному",
+      text: "Тепло, вкусно, по-семейному",
+      avatar: storyImage1,
+      preview: storyPreview,
+      items: [{ src: storyImage1, duration: 5000 }],
+      buttonText: "Оставить заявку",
+      buttonLink: "",
+      buttonHasLink: "0",
+    },
+    {
+      id: "reel-6",
+      title: "Тепло, вкусно, по-семейному",
+      text: "Тепло, вкусно, по-семейному",
+      avatar: storyImage1,
+      preview: storyPreview,
+      items: [{ src: storyImage1, duration: 5000 }],
+      buttonText: "Оставить заявку",
+      buttonLink: "",
+      buttonHasLink: "0",
+    },
+    {
+      id: "reel-7",
+      title: "Тепло, вкусно, по-семейному",
+      text: "Тепло, вкусно, по-семейному",
+      avatar: storyImage1,
+      preview: storyPreview,
+      items: [{ src: storyImage1, duration: 5000 }],
+      buttonText: "Оставить заявку",
+      buttonLink: "",
+      buttonHasLink: "0",
+    },
+    // {
+    //   id: "reel-8",
+    //   title: "Тепло, вкусно, по-семейному",
+    //   text: "Тепло, вкусно, по-семейному",
+    //   avatar: storyImage1,
+    //   preview: storyPreview,
+    //   items: [{ src: storyImage1, duration: 5000 }],
+    //   buttonText: "Оставить заявку",
+    //   buttonLink: "",
+    //   buttonHasLink: "0",
+    // },
+    // {
+    //   id: "reel-9",
+    //   title: "Тепло, вкусно, по-семейному",
+    //   text: "Тепло, вкусно, по-семейному",
+    //   avatar: storyImage1,
+    //   preview: storyPreview,
+    //   items: [{ src: storyImage1, duration: 5000 }],
+    //   buttonText: "Оставить заявку",
+    //   buttonLink: "",
+    //   buttonHasLink: "0",
+    // },
+    // {
+    //   id: "reel-10",
+    //   title: "Тепло, вкусно, по-семейному",
+    //   text: "Тепло, вкусно, по-семейному",
+    //   avatar: storyImage1,
+    //   preview: storyPreview,
+    //   items: [{ src: storyImage1, duration: 5000 }],
+    //   buttonText: "Оставить заявку",
+    //   buttonLink: "",
+    //   buttonHasLink: "0",
+    // },
+  ]
+</script>
+
+<div class="reels-modal" data-modal="reels">
+  <button type="button" class="reels-modal__close" data-modal-close="reels"></button>
+  <div class="reels-modal__block">
+    <div class="swiper" data-swiper="reels-modal">
+      <div class="swiper-wrapper" data-reels-modal-wrapper>
+        <template>
+          <div class="swiper-slide">
+            <div class="reels-modal__cta" data-reel="buttonHasLink" data-reel-attr="data-has-link">
+              <div class="reels-modal__item">
+                <div class="reels-modal__header">
+                  <div class="reels-modal__bars" data-reel-progress-bars></div>
+                  <div class="reels-modal__title">
+                    <div class="" data-reel="title"></div>
+                  </div>
+                </div>
+                <div class="reels-modal__contents" data-reel-medias></div>
+                <div class="reels-modal__nav">
+                  <button type="button" class="reels-modal__nav-zone reels-modal__nav-zone--prev" data-reels-nav="prev"></button>
+                  <button type="button" class="reels-modal__nav-zone reels-modal__nav-zone--next" data-reels-nav="next"></button>
+                </div>
+              </div>
+              <div class="reels-modal__footer">
+                <div data-reel="text"></div>
+              </div>
+              <a class="button button--primary button--100 reels-modal__button" data-reel="buttonLink" data-reel-attr="href" target="_blank" rel="nofollow noopener noreferrer">
+                <span data-reel="buttonText"></span>
+                <div class="icon-arrow"></div>
+              </a>
+              <button type="button" class="button button--primary button--100 reels-modal__button" data-close-reels data-modal-id="modalContact">
+                <span data-reel="buttonText"></span>
+                <div class="icon-arrow"></div>
+              </button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</div>

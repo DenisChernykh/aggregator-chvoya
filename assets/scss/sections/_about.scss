@@ -1,0 +1,156 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.about {
+
+  &:nth-child(2n) {
+    .about__container {
+      flex-direction: row;
+
+      @include mobile {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include tablet {
+      align-items: flex-start;
+      gap: 20rem;
+    }
+
+    @include mobile {
+      flex-direction: column-reverse;
+      gap: 28rem;
+    }
+  }
+
+  &__content {
+    max-width: 693rem;
+    display: flex;
+    flex-direction: column;
+
+    .section-header {
+      margin-bottom: 10rem;
+      gap: 20rem;
+
+      @include mobile {
+        gap: 4rem;
+        margin-bottom: 12rem;
+      }
+    }
+
+    .section__text {
+      text-align: left;
+      margin-bottom: 40rem;
+
+      @include tablet{
+        margin-block: 20rem;
+      }
+
+      @include mobile {
+        margin-bottom: 32rem;
+
+        @include bodyreg;
+      }
+    }
+  }
+
+  &__slider-wrapper {
+    max-width: 870rem;
+    height: 489rem;
+    width: 100%;
+    position: relative;
+
+    @include tablet {
+      max-width: 560rem;
+      height: 347rem;
+    }
+
+    @include mobile {
+      height: 185rem;
+    }
+  }
+
+  .slider-button-container {
+    top: 0;
+    bottom: 0;
+    left: 20rem;
+    margin: auto 0;
+    width: auto;
+
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__slider {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &-pagination {
+      .swiper-pagination-bullet {
+        width: 12rem;
+        height: 12rem;
+        background-color: var(--text-fg_static-white);
+        border-radius: 50%;
+        transform: scale(0.7);
+        transition: transform $transition;
+
+        @include mobile {
+          width: 10rem;
+          height: 10rem;
+        }
+
+        &.swiper-pagination-bullet-active {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+  &__slide {
+    width: 100%;
+    height: 100%;
+
+    &-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .swiper-pagination-horizontal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20rem;
+    margin: 0 auto;
+    z-index: 3;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    border-radius: 99px;
+    border: 1rem solid var(--figma-white-10);
+    background: var(--figma-white-10);
+    backdrop-filter: blur(20px);
+    padding: 8rem 10rem;
+
+    @include mobile {
+      bottom: 12rem;
+      padding: 4rem 8rem;
+    }
+  }
+}

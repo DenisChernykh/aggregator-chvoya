@@ -1,0 +1,156 @@
+@use '../base/mixins' as *;
+
+.section.booking-help {
+  padding: 0;
+
+  > .container {
+    width: 100%;
+    max-width: none;
+    padding-inline: 0;
+  }
+}
+
+.booking-help {
+  &__panel {
+    position: relative;
+    display: flex;
+    min-height: 600rem;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 0;
+    color: var(--text-fg_static-white);
+    text-align: center;
+  }
+
+  &__bg,
+  &__bg img,
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__bg img {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__overlay {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2.5px);
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    width: min(1166rem, calc(100% - 80rem));
+    flex-direction: column;
+    align-items: center;
+    gap: 40rem;
+    text-align: center;
+  }
+
+  &__info {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 40rem;
+  }
+
+  &__contacts,
+  &__socials,
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__contacts {
+    gap: 20rem;
+  }
+
+  &__phone {
+    color: var(--text-fg_inverted);
+    font-family: var(--font-main, 'Golos Text', Arial, Helvetica, sans-serif);
+    font-size: 20rem;
+    font-weight: 600;
+    line-height: 28rem;
+    text-decoration: none;
+  }
+
+  &__socials {
+    gap: 10rem;
+  }
+
+  &__social {
+    flex: 0 0 auto;
+  }
+
+  &__actions {
+    width: min(574rem, 100%);
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20rem;
+  }
+
+  &__button {
+    flex: 0 0 auto;
+  }
+
+  @include mobile {
+    &__panel {
+      min-height: 560px;
+      padding: 20px 16px;
+    }
+
+    &__overlay {
+      backdrop-filter: blur(2.5px);
+    }
+
+    &__content {
+      width: min(380px, 100%);
+      max-width: none;
+      gap: 20px;
+    }
+
+    &__info {
+      gap: 20px;
+    }
+
+    &__contacts {
+      gap: 12px;
+    }
+
+    &__phone {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+    }
+
+    &__socials {
+      gap: 8px;
+    }
+
+    &__social {
+      flex: 0 0 auto;
+    }
+
+    &__actions {
+      width: 100%;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__button {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 20px;
+    }
+  }
+}

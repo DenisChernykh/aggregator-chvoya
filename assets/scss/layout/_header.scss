@@ -1,0 +1,509 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+$header-phone-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='20' viewBox='0 0 22 20' fill='none'%3E%3Cpath d='M11.832 14.568C12.0385 14.6628 12.2712 14.6845 12.4917 14.6294C12.7122 14.5744 12.9073 14.4458 13.045 14.265L13.4 13.8C13.5863 13.5516 13.8279 13.35 14.1056 13.2111C14.3833 13.0723 14.6895 13 15 13H18C18.5304 13 19.0391 13.2107 19.4142 13.5858C19.7893 13.9609 20 14.4696 20 15V18C20 18.5304 19.7893 19.0391 19.4142 19.4142C19.0391 19.7893 18.5304 20 18 20C13.2261 20 8.64773 18.1036 5.27208 14.7279C1.89642 11.3523 0 6.7739 0 2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H5C5.53043 0 6.03914 0.210714 6.41421 0.585786C6.78929 0.960859 7 1.46957 7 2V5C7 5.31049 6.92771 5.61672 6.78885 5.89443C6.65 6.17214 6.44839 6.41371 6.2 6.6L5.732 6.951C5.54842 7.09118 5.41902 7.29059 5.36579 7.51535C5.31256 7.74012 5.33878 7.97638 5.44 8.184C6.80668 10.9599 9.05442 13.2048 11.832 14.568Z' fill='black'/%3E%3C/svg%3E";
+
+.header {
+  --header-container: 1760rem;
+  --header-bar-bg: var(--black-alpha-200);
+  --header-link-color: var(--text-fg_static-white);
+  --header-scroll-transition: .9s cubic-bezier(.22, 1, .36, 1);
+  --header-scroll-opacity-transition: .58s ease;
+
+  position: fixed;
+  top: 20rem;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  color: var(--text-fg_static-white);
+  font-family: var(--font-header, 'Golos Text', Arial, Helvetica, sans-serif);
+  background: transparent;
+
+  @include mobile {
+    top: 0;
+    padding-top: 8rem;
+  }
+
+  &__desktop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--header-container);
+    min-height: 64rem;
+    margin-inline: auto;
+    overflow: hidden;
+    padding: 4rem;
+    border-radius: 50rem;
+    background-color: var(--header-bar-bg);
+    backdrop-filter: blur(20rem);
+    -webkit-backdrop-filter: blur(20rem);
+    isolation: isolate;
+    transition:
+      width var(--header-scroll-transition),
+      max-width var(--header-scroll-transition),
+      min-height var(--header-scroll-transition),
+      padding var(--header-scroll-transition),
+      border-radius var(--header-scroll-transition),
+      background-color var(--header-scroll-transition),
+      box-shadow var(--header-scroll-transition),
+      backdrop-filter var(--header-scroll-transition),
+      -webkit-backdrop-filter var(--header-scroll-transition);
+    will-change: width, max-width, min-height, padding, background-color, box-shadow, backdrop-filter;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background-image: repeating-linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--text-fg_static-white) 5%, transparent) 0 1rem,
+        transparent 1rem 7rem
+      );
+      opacity: 1;
+      transition: opacity var(--header-scroll-opacity-transition);
+    }
+
+    > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @include tablet {
+      min-height: 64rem;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__desktop-group {
+    display: flex;
+    align-items: center;
+    gap: 20rem;
+    min-width: 0;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      flex-basis var(--header-scroll-transition),
+      width var(--header-scroll-transition),
+      gap var(--header-scroll-transition),
+      opacity var(--header-scroll-opacity-transition),
+      transform var(--header-scroll-transition),
+      visibility var(--header-scroll-transition);
+    will-change: flex-basis, width, gap, opacity, transform;
+  }
+
+  &__desktop-group--start {
+    flex: 0 1 376rem;
+  }
+
+  &__desktop-group--end {
+    justify-content: flex-end;
+    flex: 0 1 420rem;
+  }
+
+  &__menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &__menu-toggle--desktop {
+    gap: 8rem;
+    min-height: 56rem;
+    padding: 16rem 32rem;
+    border-radius: 99rem;
+    background: var(--bg-subtle);
+    color: var(--text-fg_static-black);
+    font-size: 16rem;
+    font-weight: 600;
+    line-height: 24rem;
+    transition: background-color $transition, color $transition;
+
+    @include hover {
+      background: var(--bg-default);
+    }
+
+    @include tablet {
+      min-height: 48rem;
+      padding: 12rem 22rem;
+      font-size: 14rem;
+      line-height: 20rem;
+    }
+  }
+
+  &__burger {
+    --burger-line-width: 8rem;
+    --burger-line-height: 1.5rem;
+    --burger-line-offset: 2.25rem;
+    --burger-open-line-width: var(--burger-line-width);
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--brand-solid);
+
+    span {
+      position: absolute;
+      display: block;
+      width: var(--burger-line-width);
+      height: var(--burger-line-height);
+      border-radius: 99rem;
+      background: currentColor;
+      transform-origin: center;
+      transition:
+        transform .24s ease,
+        width .24s ease;
+    }
+
+    span:nth-child(1) {
+      transform: translateY(calc(var(--burger-line-offset) * -1));
+    }
+
+    span:nth-child(2) {
+      transform: translateY(var(--burger-line-offset));
+    }
+  }
+
+  &__burger--desktop {
+    width: 16rem;
+    height: 16rem;
+    color: var(--text-fg_static-white);
+  }
+
+  &__taxi-link,
+  &__phone {
+    color: var(--header-link-color);
+    font-size: 16rem;
+    font-weight: 400;
+    line-height: 24rem;
+    white-space: nowrap;
+    transition: opacity $transition, color $transition;
+
+    @include hover {
+      opacity: .76;
+    }
+
+    @include tablet {
+      font-size: 13rem;
+      line-height: 18rem;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+
+    img,
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__logo--desktop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 275rem;
+    height: 64rem;
+    padding: 12rem 69rem;
+    border-radius: 55rem;
+    background: var(--bg-subtle);
+    box-shadow: 0 12rem 16rem color-mix(in srgb, var(--figma-black) 15%, transparent);
+    transform: translate(-50%, -50%);
+    transition:
+      width var(--header-scroll-transition),
+      height var(--header-scroll-transition),
+      padding var(--header-scroll-transition),
+      background-color var(--header-scroll-transition),
+      box-shadow var(--header-scroll-transition);
+    will-change: width, height, padding, background-color, box-shadow;
+
+    @include tablet {
+      width: 220rem;
+      height: 56rem;
+      padding: 11rem 54rem;
+    }
+  }
+
+  &__button {
+    min-height: 56rem;
+    padding: 16rem 32rem;
+    font-family: var(--font-header, 'Golos Text', Arial, Helvetica, sans-serif);
+
+    @include tablet {
+      min-height: 48rem;
+      padding: 12rem 22rem;
+      font-size: 14rem;
+      line-height: 20rem;
+    }
+  }
+
+  &__mobile {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      width: calc(100% - 32rem);
+      margin: 0 auto;
+      padding: 8rem 16rem;
+      border-radius: 999rem;
+      background: var(--bg-subtle);
+      box-shadow: 0 12rem 32rem color-mix(in srgb, var(--figma-black) 12%, transparent);
+    }
+  }
+
+  &__mobile-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 40rem;
+  }
+
+  &__mobile-phone,
+  &__menu-toggle--mobile {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__mobile-phone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 10rem;
+    color: var(--brand-solid);
+
+    &::before {
+      content: '';
+      display: block;
+      width: 22rem;
+      height: 20rem;
+      background: currentColor;
+      mask: url("#{$header-phone-icon}") center / contain no-repeat;
+    }
+  }
+
+  &__logo--mobile {
+    width: 80rem;
+    height: 24rem;
+  }
+
+  &__menu-toggle--mobile {
+    position: relative;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-fg_static-white);
+  }
+
+  &__burger--mobile {
+    --burger-line-width: 18px;
+    --burger-line-height: 2px;
+    --burger-line-offset: 3px;
+    --burger-open-line-width: 22.63px;
+
+    width: 32px;
+    height: 32px;
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 20rem);
+    left: max(var(--container-padding-x, 20rem), calc((100% - var(--header-container)) / 2));
+    width: min(575rem, calc(100vw - 120rem));
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-8rem);
+    transition: opacity $transition, transform $transition, visibility $transition;
+    visibility: hidden;
+
+    @include tablet {
+      left: 32rem;
+      width: min(575rem, calc(100vw - 64rem));
+    }
+
+    @include mobile {
+      top: calc(100% + 12rem);
+      left: 50%;
+      width: calc(100% - 32rem);
+      max-width: 380rem;
+      transform: translate(-50%, -8rem);
+    }
+  }
+
+  &__menu-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 40rem;
+    align-items: stretch;
+    overflow: hidden;
+    padding: 32rem;
+    border-radius: 20rem;
+    background: var(--bg-subtle);
+    color: var(--text-fg_static-black);
+    box-shadow: 0 12rem 32rem color-mix(in srgb, var(--figma-black) 15%, transparent);
+
+    @include mobile {
+      gap: 24rem;
+      padding: 16rem;
+    }
+  }
+
+  &__menu-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12rem;
+    color: var(--text-fg_default);
+    font-size: 16rem;
+    font-weight: 400;
+    line-height: 24rem;
+
+    li {
+      flex: 0 0 80rem;
+    }
+
+    a {
+      display: inline-flex;
+      color: inherit;
+      white-space: nowrap;
+      transition: color $transition;
+
+      @include hover {
+        color: var(--brand-solid);
+      }
+    }
+
+    @include mobile {
+      display: grid;
+      grid-template-columns: repeat(2, 80rem);
+      grid-template-rows: repeat(4, auto);
+      grid-auto-flow: column;
+      column-gap: 40rem;
+      row-gap: 16rem;
+    }
+  }
+
+  &__menu-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24rem;
+
+    @include mobile {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 24rem;
+    }
+  }
+
+  &__menu-button {
+    min-width: 210rem;
+    min-height: 56rem;
+
+    @include mobile {
+      justify-content: space-between;
+      width: 100%;
+      min-width: 0;
+      min-height: 44rem;
+      padding: 12rem 20rem;
+      font-size: 14rem;
+      line-height: 20rem;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+  }
+
+  &--menu-open {
+    .header__menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      visibility: visible;
+
+      @include mobile {
+        transform: translate(-50%, 0);
+      }
+    }
+    .header__burger span:nth-child(1) {
+      width: var(--burger-open-line-width);
+      transform: rotate(45deg);
+    }
+
+    .header__burger span:nth-child(2) {
+      width: var(--burger-open-line-width);
+      transform: rotate(-45deg);
+    }
+  }
+
+  &--surface-light {
+    --header-bar-bg: var(--black-alpha-100);
+    --header-link-color: var(--text-fg_static-black);
+  }
+
+  &--scrolling:not(.header--menu-open) {
+    .header__desktop {
+      width: 275rem;
+      max-width: 275rem;
+      min-height: 64rem;
+      padding: 12rem;
+      background-color: var(--bg-default);
+      box-shadow: 0 12rem 16rem color-mix(in srgb, var(--figma-black) 15%, transparent);
+      backdrop-filter: blur(15rem);
+      -webkit-backdrop-filter: blur(15rem);
+
+      &::before {
+        opacity: 0;
+      }
+    }
+
+    .header__desktop-group {
+      flex: 0 0 0;
+      width: 0;
+      gap: 0;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .header__desktop-group--start {
+      transform: translateX(86rem);
+    }
+
+    .header__desktop-group--end {
+      transform: translateX(-86rem);
+    }
+
+    .header__logo--desktop {
+      width: 135rem;
+      height: 40rem;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+  }
+}

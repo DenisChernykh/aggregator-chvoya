@@ -1,0 +1,200 @@
+@use '../base/mixins' as *;
+
+.section-header--split {
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40rem;
+  max-width: none;
+  text-align: left;
+
+  .section-title {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .section-text {
+    text-align: left;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: 12px;
+
+    .section-title {
+      flex: 0 1 auto;
+      width: 100%;
+    }
+  }
+}
+
+.services {
+  .section-header {
+    min-height: 56rem;
+  }
+
+  @include tablet {
+    .section-header {
+      align-items: flex-start;
+    }
+  }
+
+  @include mobile {
+    .section-header {
+      align-items: flex-start;
+      min-height: 104px;
+      justify-content: center;
+    }
+  }
+}
+
+.faq,
+.articles {
+  .section-header {
+    align-items: flex-start;
+    max-width: none;
+    text-align: left;
+  }
+
+  .section-text {
+    text-align: left;
+  }
+}
+
+.section.rooms > .container,
+.section.reviews > .container,
+.section.atmosphere > .container,
+.section.booking-cta > .container,
+.section.contacts > .container {
+  align-items: center;
+}
+
+.section.rooms > .container,
+.section.reviews > .container {
+  gap: 40rem;
+
+  @include mobile {
+    gap: 24px;
+  }
+}
+
+.section.rooms > .container {
+  @include mobile {
+    align-items: stretch;
+  }
+}
+
+.section.reviews > .container {
+  @include mobile {
+    align-items: flex-start;
+  }
+}
+
+.section.booking-cta > .container {
+  @include mobile {
+    gap: 32px;
+  }
+}
+
+.section.booking-help,
+.section.booking-panel {
+  --container: 1920rem;
+  --container-padding-x: 20rem;
+
+  @include tablet {
+    --container-padding-x: 24rem;
+  }
+
+  @include mobile {
+    --container-padding-x: 16px;
+  }
+}
+
+.section.gallery > .container {
+  gap: 0;
+}
+
+.booking-help,
+.booking-panel,
+.hotel-benefits {
+  .section-title {
+    color: inherit;
+  }
+}
+
+.booking-help,
+.booking-panel {
+  .section-header {
+    margin: 0;
+  }
+}
+
+.booking-help {
+  .section-header {
+    gap: 20rem;
+  }
+
+  .section-text {
+    color: inherit;
+  }
+
+  @include mobile {
+    .section-header {
+      gap: 12px;
+    }
+  }
+}
+
+.booking-panel {
+  .section-header {
+    gap: 20rem;
+  }
+
+  .section-text {
+    color: var(--text-fg_inverted);
+  }
+
+  @include mobile {
+    .section-header {
+      gap: 12px;
+    }
+  }
+}
+
+.hotel-benefits {
+  .section-text {
+    color: inherit;
+  }
+}
+
+.section--curved-caps {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 41rem;
+    border-radius: 0 0 32rem 32rem;
+    background: var(--bg-default);
+    pointer-events: none;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+    transform: scaleY(-1);
+  }
+
+  @include mobile {
+    &::before,
+    &::after {
+      height: 20px;
+      border-radius: 0 0 32px 32px;
+    }
+  }
+}

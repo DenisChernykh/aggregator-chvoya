@@ -1,0 +1,27 @@
+{
+  "name": "modules-vg-reels",
+  "version": "1.0.1",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/modules-vg-reels.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "swiper": ">=11 <13"
+  },
+  "author": "Маслаков Владислав Денисович",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VICTORY-digital/modules-vg-reels/tree/npm-package"
+  }
+}

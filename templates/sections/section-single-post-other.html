@@ -1,0 +1,32 @@
+<section class="section articles articles--related" aria-labelledby="single-post-other-title" data-header-surface="light" data-single-post-articles>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title" id="single-post-other-title">Другие статьи</h2>
+    </div>
+
+    <div class="articles__body">
+      <div class="articles__slider-wrap">
+        <button class="articles__arrow articles__arrow--prev slider-arrow slider-arrow--prev" type="button" aria-label="Предыдущая статья" data-single-post-articles-prev></button>
+        <div class="articles__slider swiper" data-single-post-articles-slider>
+          <div class="articles__grid swiper-wrapper">
+            <div class="articles__slide swiper-slide">
+              @@include('/templates/components/article-card.html')
+            </div>
+            <div class="articles__slide swiper-slide">
+              @@include('/templates/components/article-card.html')
+            </div>
+            <div class="articles__slide swiper-slide">
+              @@include('/templates/components/article-card.html')
+            </div>
+            <div class="articles__slide swiper-slide">
+              @@include('/templates/components/article-card.html')
+            </div>
+          </div>
+        </div>
+        <button class="articles__arrow articles__arrow--next slider-arrow slider-arrow--next" type="button" aria-label="Следующая статья" data-single-post-articles-next></button>
+      </div>
+
+      <a href="/blog" class="articles__button button button--primary">Показать все статьи</a>
+    </div>
+  </div>
+</section>

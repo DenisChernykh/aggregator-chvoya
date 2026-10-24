@@ -1,0 +1,31 @@
+{
+  "name": "aggregator-chvoya",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/print-build-assets.mjs",
+    "preview": "vite preview",
+    "tokens:split": "node scripts/split-figma-tokens.mjs",
+    "tokens:build-css": "node scripts/build-token-theme.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "glightbox": "^3.3.1",
+    "inputmask": "^5.0.9",
+    "modules-vg-reels": "file:packages/reels",
+    "sass": "^1.97.3",
+    "swiper": "^12.1.3"
+  },
+  "packageManager": "pnpm@11.15.1",
+  "engines": {
+    "node": ">=24 <25",
+    "pnpm": "11.15.1"
+  }
+}

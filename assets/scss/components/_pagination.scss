@@ -1,0 +1,127 @@
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20rem;
+  width: fit-content;
+  margin: 0 auto;
+
+  @include mobile {
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    height: 50rem;
+
+    @include mobile {
+      gap: 8px;
+      height: 50px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 8rem;
+    background-color: var(--bg-subtle);
+    color: var(--text-fg_default);
+    font-family: var(--font-main, 'Golos Text', Arial, Helvetica, sans-serif);
+    font-size: 16rem;
+    font-weight: 400;
+    line-height: 24rem;
+    text-decoration: none;
+    transition:
+      background-color $transition,
+      border-color $transition,
+      color $transition;
+    cursor: pointer;
+
+    @include hover {
+      background-color: var(--brand-subtle, var(--bg-default));
+      color: var(--brand-solid);
+    }
+
+    @include mobile {
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &.current,
+    &[aria-current="page"] {
+      background-color: var(--brand-solid);
+      color: var(--text-fg_static-white);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &[aria-disabled="true"] {
+      cursor: default;
+      pointer-events: none;
+    }
+
+    &--number,
+    &.number {
+      width: 40rem;
+      height: 40rem;
+      flex: 0 0 40rem;
+      padding: 10rem;
+
+      @include mobile {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+        padding: 10px;
+      }
+    }
+
+    &--arrow,
+    &.prev,
+    &.next {
+      --slider-arrow-size: 40rem;
+      --slider-arrow-icon-size: 20rem;
+
+      width: 40rem;
+      height: 40rem;
+      flex: 0 0 40rem;
+      border-radius: 99rem;
+      background: var(--fg-muted);
+      color: var(--text-fg_static-white);
+      overflow: hidden;
+      padding: 0;
+
+      @include hover {
+        background: var(--brand-solid);
+        color: var(--text-fg_static-white);
+      }
+
+      @include mobile {
+        --slider-arrow-size: 40px;
+        --slider-arrow-icon-size: 20px;
+
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+      }
+
+      &[aria-disabled="true"] {
+        opacity: 1;
+      }
+
+      &::before {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}

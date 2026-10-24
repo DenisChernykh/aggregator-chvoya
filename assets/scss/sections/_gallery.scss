@@ -1,0 +1,233 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60rem;
+  background: var(--bg-default);
+
+  .section-header {
+    max-width: 870rem;
+  }
+
+  .section-text {
+    width: 575rem;
+  }
+
+  &__viewport {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20rem;
+  }
+
+  &__main-wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  &__main {
+    width: 100%;
+    overflow: visible;
+  }
+
+  &__main .swiper-wrapper {
+    align-items: center;
+  }
+
+  &__slide {
+    position: relative;
+    height: 450rem;
+    overflow: hidden;
+    border-radius: 20rem;
+    background: var(--bg-muted);
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--figma-white-60);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__slide--wide {
+    width: 800rem;
+  }
+
+  &__slide--narrow {
+    width: 360rem;
+  }
+
+  &__slide--soft:not(.swiper-slide-active)::after {
+    opacity: 1;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    transform: translateY(-50%);
+
+    &--prev {
+      left: 32rem;
+    }
+
+    &--next {
+      right: 32rem;
+    }
+  }
+
+  &__pagination.swiper-pagination-horizontal {
+    position: absolute;
+    bottom: 16rem;
+    left: 50%;
+    z-index: 4;
+    transform: translateX(-50%);
+  }
+
+  &__thumbs {
+    width: min(1166rem, calc(100% - 48rem));
+    height: 90rem;
+    overflow: hidden;
+  }
+
+  &__thumb {
+    position: relative;
+    width: calc((1166rem - 47.73rem) / 7);
+    height: 90rem;
+    overflow: hidden;
+    border-radius: 1.326rem;
+    background: var(--bg-muted);
+    cursor: pointer;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition;
+    }
+
+    &::before {
+      inset: 0;
+      border: 0.663rem solid var(--text-fg_static-white);
+      border-radius: inherit;
+      background: color-mix(
+        in srgb,
+        var(--text-fg_static-black) 50%,
+        transparent
+      );
+      box-shadow: 0 1.326rem 2.652rem
+        color-mix(in srgb, var(--text-fg_static-black) 15%, transparent);
+    }
+
+    &::after {
+      top: 50%;
+      left: 50%;
+      width: 10.606rem;
+      height: 10.606rem;
+      border-radius: 50%;
+      background: var(--text-fg_static-white);
+      transform: translate(-50%, -50%);
+    }
+
+    &.swiper-slide-thumb-active {
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include mobile {
+    gap: 24px;
+
+    .section-header {
+      max-width: 100%;
+    }
+
+    .section-text {
+      width: 100%;
+    }
+
+    &__viewport {
+      gap: 0;
+    }
+
+    &__slide {
+      height: 197px;
+      border-radius: 10px;
+    }
+
+    &__slide--wide {
+      width: min(350px, calc(100vw - 62px));
+    }
+
+    &__slide--narrow {
+      width: 158px;
+    }
+
+    &__arrow {
+      display: none;
+    }
+
+    &__pagination.swiper-pagination-horizontal {
+      bottom: 8px;
+    }
+
+    &__thumbs {
+      width: calc(100% - 16px);
+      height: 56px;
+      padding-left: 16px;
+      overflow: visible;
+    }
+
+    &__thumb {
+      width: 100px;
+      height: 56px;
+      border-radius: 1.326px;
+
+      &::before {
+        border-width: 0.663px;
+        box-shadow: 0 1.326px 2.652px
+          color-mix(in srgb, var(--text-fg_static-black) 15%, transparent);
+      }
+
+      &::after {
+        width: 10.606px;
+        height: 10.606px;
+      }
+    }
+  }
+}

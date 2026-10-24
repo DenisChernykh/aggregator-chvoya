@@ -1,0 +1,68 @@
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
+
+.breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+  color: var(--base-400);
+  margin-bottom: 36rem;
+
+  @include mobile {
+    gap: 8rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    width: calc(100% + 32rem);
+    margin: 0 -16rem 24rem;
+    padding: 0 16rem;
+    justify-content: flex-start;
+  }
+
+  &__link {
+    @include smalltextreg;
+    color: var(--base-400);
+    transition: color $transition;
+
+    @include mobile {
+      white-space: nowrap;
+    }
+    
+    &:not(:first-child) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10rem;
+
+      &::before {
+        content: '';
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background-color: currentColor;
+        transition: background-color $transition;
+
+        @include mobile {
+          width: 4rem;
+          height: 4rem;
+        }
+      }
+    }
+
+    @include hover {
+      color: var(--brand-solid);
+
+    }
+
+    &.current {
+      color: var(--text-fg_static-white);
+
+      &::before {
+        background-color: currentColor;
+      }
+    }
+  }
+}

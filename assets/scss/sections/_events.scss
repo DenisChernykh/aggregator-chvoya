@@ -1,0 +1,94 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.events {
+  max-width: 1920rem;
+  margin: 0 auto;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__item {
+    width: 100%;
+    padding: 60rem 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mobile{
+      flex-direction: column;
+      padding: 24rem 0;
+    }
+
+    @include hover {
+      .events__item-image {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    &::before {
+      content: '';
+      width: 200vw;
+      height: 1rem;
+      background-color: var(--border-inverted);
+      position: absolute;
+      top: 0;
+      left: -100vw;
+    }
+
+    &:last-child {
+      &::after {
+        content: '';
+        width: 200vw;
+        height: 1rem;
+        background-color: var(--border-inverted);
+        position: absolute;
+        bottom: 0;
+        left: -100vw;
+      }
+    }
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20rem;
+      max-width: 547rem;
+    }
+
+    &-right {
+      @include mobile{
+        width: 100%;
+        margin-top: 24rem;
+      }
+    }
+
+    &-image {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 546rem;
+      height: 307rem;
+      z-index: 2;
+      transform: scale(0.6);
+      opacity: 0;
+      transition: transform $transition, opacity $transition;
+      will-change: transform;
+
+      @include mobile{
+        position: static;
+        opacity: 1;
+        width: 100%;
+        height: auto;
+        order: -1;
+        transform: none;
+        margin-bottom: 24rem;
+      }
+    }
+  }
+}

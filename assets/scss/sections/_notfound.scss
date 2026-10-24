@@ -1,0 +1,43 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.not-found {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40rem;
+    align-items: center;
+    text-align: center;
+    max-width: 869rem;
+    margin-inline: auto;
+  }
+  
+  &__image {
+    width: 729rem;
+    margin-bottom: 10rem;
+  }
+  
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 20rem;
+    align-items: center;
+
+    span{
+      color: var(--text-fg_muted);
+      max-width: 612rem;
+    }
+  }
+
+  &__button {
+    width: 300rem;
+  }
+}

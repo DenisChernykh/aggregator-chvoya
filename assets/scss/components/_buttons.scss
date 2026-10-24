@@ -1,0 +1,388 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+$button-primary-arrow-icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='12' fill='%23F3F6F3'/%3E%3Cpath d='M10 8L14 12L10 16' stroke='%230F5719' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E";
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  transition: background-color .2s ease, color .2s ease;
+
+  &:disabled {
+    color: var(--text-fg_muted);
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+  min-height: 56rem;
+  padding: 16rem 32rem;
+  border: 1.5rem solid transparent;
+  border-radius: 99rem;
+  color: var(--text-fg_default);
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 16rem;
+  font-weight: 600;
+  line-height: 24rem;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  transition:
+    background-color $transition,
+    border-color $transition,
+    color $transition,
+    opacity $transition,
+    transform $transition,
+    box-shadow $transition;
+
+  @include mobile {
+    min-height: 44rem;
+    padding: 12rem 24rem;
+    border-width: 1.5rem;
+    font-size: 14rem;
+    line-height: 20rem;
+  }
+}
+
+.button--primary {
+  background: var(--brand-solid);
+  border-color: var(--brand-solid);
+  color: var(--text-fg_static-white);
+
+  &:not(.has-arrow)::after {
+    content: '';
+    display: block;
+    flex: 0 0 auto;
+    width: 24rem;
+    height: 24rem;
+    background: url("#{$button-primary-arrow-icon}") center / contain no-repeat;
+    transform: scale(1);
+    transition: transform $transition;
+  }
+
+  &:not(:disabled, [disabled]) {
+    @include hover {
+      background: var(--brand-fg);
+      border-color: var(--brand-fg);
+      color: var(--text-fg_static-white);
+
+      &::after {
+        transform: scale(1.1667);
+      }
+    }
+
+    &:active {
+      background: var(--brand-emphasized);
+      border-color: var(--brand-emphasized);
+      color: var(--text-fg_static-white);
+    }
+  }
+}
+
+.button--outline {
+  background: transparent;
+  border-color: var(--border-brand);
+  color: var(--text-fg_default);
+
+  &:not(:disabled, [disabled]) {
+    @include hover {
+      background: color-mix(in srgb, var(--brand-solid) 8%, transparent);
+    }
+
+    &:active {
+      background: color-mix(in srgb, var(--brand-solid) 14%, transparent);
+    }
+  }
+}
+
+.button--light {
+  background: var(--text-fg_static-white);
+  border-color: var(--text-fg_static-white);
+  color: var(--text-fg_static-black);
+
+  &:not(:disabled, [disabled]) {
+    @include hover {
+      background: var(--brand-subtle);
+      border-color: var(--brand-subtle);
+    }
+  }
+}
+
+.button--glass {
+  background: var(--figma-white-10);
+  border-color: var(--border-default);
+  color: var(--text-fg_static-white);
+  backdrop-filter: blur(15rem);
+
+  &:not(:disabled, [disabled]) {
+    @include hover {
+      background: color-mix(in srgb, var(--text-fg_static-white) 18%, transparent);
+    }
+  }
+}
+
+.button--glass-arrow {
+  background: var(--figma-white-10);
+  border-color: var(--border-default);
+  color: var(--text-fg_static-white);
+  backdrop-filter: blur(13.1rem);
+
+  &::after {
+    content: '';
+    display: block;
+    flex: 0 0 auto;
+    width: 24rem;
+    height: 24rem;
+    background: url("#{$button-primary-arrow-icon}") center / contain no-repeat;
+  }
+
+  &:not(:disabled, [disabled]) {
+    @include hover {
+      background: color-mix(in srgb, var(--text-fg_static-white) 18%, transparent);
+      border-color: var(--text-fg_static-white);
+    }
+  }
+}
+
+.button--sm {
+  min-height: 44rem;
+  padding: 10rem 20rem;
+  font-size: 14rem;
+  line-height: 20rem;
+}
+
+.button--md {
+  min-height: 56rem;
+}
+
+.button--block,
+.button--100 {
+  width: 100%;
+  min-width: 0;
+}
+
+.button.has-arrow::after {
+  content: '';
+  display: block;
+  flex: 0 0 auto;
+  width: 24rem;
+  height: 24rem;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 17L17 7M17 7H8M17 7V16' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  transform: scale(1);
+  transition: transform $transition, background-color $transition;
+
+  @include mobile {
+    width: 24rem;
+    height: 24rem;
+  }
+}
+
+.button.button--primary.has-arrow::after {
+  background: url("#{$button-primary-arrow-icon}") center / contain no-repeat;
+  mask: none;
+}
+
+.button:disabled,
+.button[disabled],
+.button[aria-disabled='true'] {
+  background: var(--bg-subtle);
+  border-color: transparent;
+  color: var(--text-fg_muted);
+  box-shadow: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+.button--primary:disabled,
+.button--primary[disabled],
+.button--primary[aria-disabled='true'] {
+  background: var(--brand-muted);
+  border-color: var(--brand-muted);
+  color: var(--text-fg_static-white);
+}
+
+.link-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+  width: fit-content;
+  padding: 0 0 8rem;
+  border: 0;
+  border-bottom: 1rem solid currentColor;
+  background: transparent;
+  color: var(--text-fg_default);
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 16rem;
+  font-weight: 600;
+  line-height: 24rem;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color $transition,
+    color $transition,
+    opacity $transition,
+    transform $transition;
+
+  &::after {
+    content: '';
+    display: block;
+    flex: 0 0 auto;
+    width: 24rem;
+    height: 24rem;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M7 17L17 7M17 7H8M17 7V16' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+
+  @include mobile {
+    gap: 8rem;
+    padding-bottom: 8rem;
+    border-bottom-width: 1rem;
+    font-size: 14rem;
+    line-height: 20rem;
+
+    &::after {
+      width: 24rem;
+      height: 24rem;
+    }
+  }
+}
+
+.link-action--dark {
+  color: var(--text-fg_static-black);
+}
+
+.link-action--light {
+  color: var(--text-fg_static-white);
+}
+
+.link-action--muted {
+  color: var(--text-fg_default);
+  border-bottom-color: var(--border-inverted);
+}
+
+.link-action--reveal {
+  opacity: 0;
+  transform: translateY(4rem);
+}
+
+.slider-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: 20rem;
+  right: 20rem;
+  width: 100%;
+  margin: 0 auto;
+  pointer-events: none;
+
+  @include tablet {
+    display: none;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.slider-button {
+  width: 40rem;
+  height: 50rem;
+  background-color: var(--text-fg_static-white);
+  border: 1rem solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  z-index: 24;
+  transition: border-color .2s ease, opacity .2s ease;
+
+  @include hover {
+    border-color: var(--text-fg_static-white);
+  }
+
+  &::after {
+    content: '';
+    @include iconMask(("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='24' viewBox='0 0 14 24' fill='none'%3E%3Cpath d='M0.50586 0.552734L12.5059 11.5527L0.50586 22.5527' stroke='white' stroke-width='1.5'/%3E%3C/svg%3E"), 100%);
+    width: 12rem;
+    height: 22rem;
+    mask-size: contain;
+
+  }
+
+  &--prev {
+    transform: rotate(180deg);
+  }
+
+  &[disabled] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.swiper-button-lock {
+    display: none;
+  }
+}
+
+.slider-arrow {
+  display: flex;
+  width: var(--slider-arrow-size, 48rem);
+  height: var(--slider-arrow-size, 48rem);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 99rem;
+  background: var(--slider-arrow-bg, var(--fg-muted));
+  color: var(--slider-arrow-color, var(--text-fg_static-white));
+  cursor: pointer;
+  transition: background-color $transition, color $transition, opacity $transition;
+
+  &::before {
+    content: '';
+    display: block;
+    width: var(--slider-arrow-icon-size, 24rem);
+    height: var(--slider-arrow-icon-size, 24rem);
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9 6L15 12L9 18' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+
+  @include hover {
+    background: var(--brand-solid);
+  }
+
+  &--prev::before {
+    transform: rotate(180deg);
+  }
+
+  &.swiper-button-disabled,
+  &[disabled] {
+    color: var(--text-fg_static-white);
+    opacity: .35;
+    pointer-events: none;
+  }
+
+  &.swiper-button-lock {
+    display: none;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}

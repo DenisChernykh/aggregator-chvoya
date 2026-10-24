@@ -1,0 +1,89 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.bottom-menu {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 16rem;
+    z-index: 35;
+    margin: 0 auto;
+    padding: 4rem;
+    border-radius: 8rem;
+    border-radius: 8rem;
+    background:
+        linear-gradient(0deg, var(--figma-white-10) 0%, var(--figma-white-10) 100%),
+        color-mix(in srgb, var(--text-fg_static-black) 20%, transparent);
+    box-shadow: 0 0 15rem 0 color-mix(in srgb, var(--text-fg_static-black) 10%, transparent);
+    backdrop-filter: blur(30px);
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem;
+    width: 100%;
+    max-width: calc(100% - 32rem);
+    height: fit-content;
+    transition: all 0.3s ease;
+
+    @include mobile {
+        display: flex;
+    }
+
+
+    &--hidden {
+        transform: translateY(200%);
+    }
+
+    &__link {
+        border-radius: 4rem;
+        width: 100%;
+        height: 44rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 96rem;
+        position: relative;
+        background: var(--figma-white-10);
+        backdrop-filter: blur(18px);
+        color: white;
+        font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+        font-size: 10rem;
+        font-weight: 600;
+        line-height: 14rem;
+        white-space: nowrap;
+
+        &.white {
+            background: var(--text-fg_static-white);
+            flex: 0 0 120rem;
+            color: var(--text-fg_static-black);
+
+            &::before {
+                background: var(--text-fg_static-white);
+                inset: 0;
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1rem;
+            border-radius: inherit;
+
+            background:
+                linear-gradient(290deg, var(--text-fg_static-white) -45.73%, transparent 31.01%),
+                linear-gradient(125deg, var(--text-fg_static-white) -158.48%, transparent 58.47%);
+
+            --mask: linear-gradient(var(--text-fg_static-white) 0 0) content-box, linear-gradient(var(--text-fg_static-white) 0 0);
+
+            -webkit-mask: var(--mask);
+            mask: var(--mask);
+
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+            pointer-events: none;
+        }
+    }
+}

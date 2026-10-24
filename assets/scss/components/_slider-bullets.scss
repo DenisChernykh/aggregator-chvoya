@@ -1,0 +1,47 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.slider-bullets {
+  &.swiper-pagination-horizontal {
+    --swiper-pagination-bullet-horizontal-gap: var(--slider-bullets-gap, 4rem);
+
+    box-sizing: content-box;
+    width: auto;
+    padding: var(--slider-bullets-padding, 8rem 12rem);
+    border: 1rem solid var(--figma-white-10);
+    border-radius: 99rem;
+    background: var(--figma-white-10);
+    backdrop-filter: blur(var(--slider-bullets-blur, 20.2rem));
+    line-height: 0;
+  }
+
+  .swiper-pagination-bullet {
+    width: var(--slider-bullets-size, 12rem);
+    height: var(--slider-bullets-size, 12rem);
+    border-radius: 99rem;
+    background: var(--figma-white-60);
+    opacity: 1;
+    transform: scale(var(--slider-bullets-inactive-scale, .5));
+    transition: transform $transition, background-color $transition;
+  }
+
+  .swiper-pagination-bullet-active {
+    transform: scale(1);
+    background: var(--text-fg_static-white);
+  }
+
+  @include mobile {
+    &.swiper-pagination-horizontal {
+      --slider-bullets-gap: 4px;
+      --slider-bullets-padding: 4px 12px;
+      --slider-bullets-blur: 20.2px;
+      --slider-bullets-inactive-scale: .6;
+
+      border-width: 1px;
+    }
+
+    .swiper-pagination-bullet {
+      --slider-bullets-size: 10px;
+    }
+  }
+}

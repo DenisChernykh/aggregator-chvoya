@@ -1,0 +1,371 @@
+:root {
+  --vgalert-bg: var(--text-fg_static-white);
+  --vgalert-border-radius: 6rem;
+  --vgalert-message-color: var(--bg-default);
+  --vgalert-title-color: var(--neutral-900);
+  --vgalert-info-color: var(--brand-solid);
+  --vgalert-success-color: var(--brand-solid);
+  --vgalert-error-color: var(--brand-solid);
+  --vgalert-close-color: var(--neutral-900);
+  --vgalert-close-border-color: var(--border-default);
+  --vgalert-close-bg: var(--bg-subtle);
+  --vgalert-title-size: 16rem;
+  --vgalert-message-size: 14rem;
+  --vgalert-button-confirm-bg: var(--brand-solid);
+  --vgalert-button-confirm-bg-hover: var(--brand-subtle);
+  --vgalert-button-confirm-text: var(--text-fg_static-white);
+  --vgalert-button-cancel-bg: var(--brand-solid);
+  --vgalert-button-cancel-bg-hover: var(--brand-emphasized);
+  --vgalert-button-cancel-text: var(--text-fg_static-white);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --vgalert-border-radius: 4rem;
+    --vgalert-title-size: 14rem;
+    --vgalert-message-size: 12rem;
+  }
+}
+
+.vgalert {
+  position: fixed;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10rem;
+  padding: 14rem 18rem;
+  background-color: var(--vgalert-bg, var(--text-fg_static-white));
+  color: var(--vgalert-message-color, var(--text-fg_static-black));
+  border: 1.5rem solid var(--brand-solid);
+  box-shadow: 0 4rem 12rem 0 color-mix(in srgb, var(--neutral-900) 12%, transparent);
+  color: var(--text-fg_static-black);
+  font-size: 14rem;
+  font-weight: 400;
+  border-radius: var(--vgalert-border-radius, 6rem);
+  opacity: 0;
+  transition: .35s ease;
+  z-index: 9999;
+  max-width: 374rem;
+
+  @media (max-width: 768px) {
+    font-size: 12rem;
+    max-width: 350rem;
+    padding: 10rem 14rem;
+  }
+
+  &[data-vgalert-theme="auto"] {
+    @media (prefers-color-scheme: dark) {
+      --vgalert-bg: var(--neutral-900);
+      --vgalert-title-color: var(--text-fg_static-white);
+      --vgalert-message-color: var(--bg-muted);
+      --vgalert-success-color: var(--brand-solid);
+      --vgalert-close-color: var(--text-fg_static-white);
+      --vgalert-close-border-color: var(--border-inverted);
+      --vgalert-close-bg: var(--bg-default);
+    }
+  }
+
+  &[data-vgalert-theme="dark"] {
+    --vgalert-bg: var(--neutral-900);
+    --vgalert-title-color: var(--text-fg_static-white);
+    --vgalert-message-color: var(--bg-muted);
+    --vgalert-success-color: var(--brand-solid);
+    --vgalert-close-color: var(--text-fg_static-white);
+    --vgalert-close-border-color: var(--border-inverted);
+    --vgalert-close-bg: var(--bg-default);
+  }
+
+  &[data-vgalert-parent]:not(.show) {
+    &[data-vgalert-position*="top"] {
+      transform: translateY(30rem);
+    }
+
+    &[data-vgalert-position*="bottom"] {
+      transform: translateY(-30rem);
+    }
+
+    &[data-vgalert-position*="right"] {
+      transform: translateX(-30rem);
+    }
+
+    &[data-vgalert-position*="left"] {
+      transform: translateX(30rem);
+    }
+  }
+
+  // Если в атрибуте data-vgalert-position указан "top", элемент появляется сверху.
+  &[data-vgalert-position*="top"] {
+    transform: translateY(-30rem) scale(.8);
+  }
+
+  // Если указан "bottom", элемент изначально смещён вниз.
+  &[data-vgalert-position*="bottom"] {
+    transform: translateY(30rem) scale(.8);
+  }
+
+  // Если указан "left" – появление с левой стороны.
+  &[data-vgalert-position*="left"] {
+    transform: translateX(-30rem) scale(.8);
+  }
+
+  // Если указан "right" – появление с правой стороны.
+  &[data-vgalert-position*="right"] {
+    transform: translateX(30rem) scale(.8);
+  }
+
+  // Если указан "center center" (и нет конкретики по направлению) можно задать лёгкое масштабирование:
+  &[data-vgalert-position="center center"],
+  &[data-vgalert-position="center"] {
+    transform: scale(0.8);
+  }
+
+  // При наличии класса .show, transform сбрасывается в нормальное состояние
+  // (то есть translate(0) или scale(1)), а opacity становится 1.
+  &.show {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+
+  &--shake {
+    animation: vgalert-shake-anim .5s cubic-bezier(.36, .07, .19, .97) both;
+  }
+
+  &-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--vgalert-icon-color, var(--text-fg_static-white));
+    width: 28rem;
+    height: 28rem;
+    border-radius: 4rem;
+    background: var(--brand-solid);
+
+    @media (max-width: 768px) {
+      width: 22rem;
+      height: 22rem;
+    }
+
+    >svg {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      width: 20rem;
+      height: 20rem;
+
+      @media (max-width: 768px) {
+        width: 18rem;
+        height: 18rem;
+      }
+    }
+
+    &:before {
+      content: "";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M10 13.2V10M10 6.8H10.008M18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10Z' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      width: 20rem;
+      height: 20rem;
+      background-color: currentColor;
+
+      @media (max-width: 768px) {
+        width: 18rem;
+        height: 18rem;
+      }
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    @media (max-width: 768px) {
+      gap: 3rem;
+    }
+  }
+
+  &-title {
+    flex: 1 1 100%;
+    font-weight: 600;
+    font-size: var(--vgalert-title-size, 16rem);
+    color: var(--vgalert-title-color, var(--text-fg_static-black));
+  }
+
+  &-message {
+    font-size: var(--vgalert-message-size, 16rem);
+    color: var(--vgalert-message-color, var(--text-fg_static-black));
+  }
+
+  &-close {
+    min-width: 32rem;
+    height: 32rem;
+    position: absolute;
+    top: 15rem;
+    right: 15rem;
+    border-radius: 4rem;
+    border: 1.5rem solid var(--vgalert-close-border-color, var(--border-default));
+    background: var(--vgalert-close-bg, var(--bg-subtle));
+    color: var(--vgalert-close-color, var(--neutral-900));
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 100%;
+
+    @media (max-width: 768px) {
+      width: 24rem;
+      height: 24rem;
+      top: 10rem;
+      right: 10rem;
+    }
+
+    &:not(.vgalert-close-text) {
+      &:before {
+        content: "";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M0.75 0.75L10.75 10.75M10.75 0.75L0.75 10.75' stroke='%23121315' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-color: currentColor;
+        width: 10rem;
+        height: 10rem;
+      }
+    }
+  }
+
+  &-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10rem;
+    margin-top: 10rem;
+  }
+
+  &-confirm,
+  &-cancel {
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8rem;
+    padding: 10rem 18rem;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+  }
+
+  &-confirm {
+    background-color: var(--vgalert-button-confirm-bg);
+    color: var(--vgalert-button-confirm-text, var(--text-fg_static-white));
+
+    &:hover {
+      background-color: var(--vgalert-button-confirm-bg-hover, var(--brand-emphasized));
+    }
+  }
+
+  &-cancel {
+    background-color: var(--vgalert-button-cancel-bg);
+    color: var(--vgalert-button-cancel-text, var(--text-fg_static-white));
+    margin-left: auto;
+
+    &:hover {
+      background-color: var(--vgalert-button-cancel-bg-hover, var(--brand-emphasized));
+    }
+  }
+
+
+  &.success {
+    border-color: var(--vgalert-success-color, var(--brand-solid));
+
+    .vgalert-icon {
+      background: var(--vgalert-success-color, var(--brand-solid));
+
+      &:before {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10' fill='none'%3E%3Cpath d='M12.75 0.75L4.5 8.75L0.75 5.11364' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        width: 12rem;
+        height: 8rem;
+      }
+    }
+  }
+
+  &.error {
+    border-color: var(--vgalert-error-color, var(--brand-emphasized));
+
+    .vgalert-icon {
+      background: var(--vgalert-error-color, var(--brand-emphasized));
+
+      &:before {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='18' viewBox='0 0 14 18' fill='none'%3E%3Cpath d='M6.75 5.54956V8.74902M6.75 11.9485H6.7575M12.75 9.54888C12.75 13.5482 10.125 15.5479 7.005 16.7077C6.84162 16.7667 6.66415 16.7639 6.5025 16.6997C3.375 15.5479 0.75 13.5482 0.75 9.54888V3.94982C0.75 3.73769 0.829018 3.53424 0.96967 3.38423C1.11032 3.23423 1.30109 3.14996 1.5 3.14996C3 3.14996 4.875 2.19012 6.18 0.974322C6.33889 0.829545 6.54102 0.75 6.75 0.75C6.95898 0.75 7.16111 0.829545 7.32 0.974322C8.6325 2.19812 10.5 3.14996 12 3.14996C12.1989 3.14996 12.3897 3.23423 12.5303 3.38423C12.671 3.53424 12.75 3.73769 12.75 3.94982V9.54888Z' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        width: 12rem;
+        height: 16rem;
+      }
+    }
+  }
+
+  &.vgalert-has-icon {
+    .vgalert-wrapper {
+      width: calc(100% - 38rem);
+
+      @media (max-width: 768px) {
+        width: calc(100% - 32rem);
+      }
+    }
+  }
+
+  &:has(.vgalert-close) {
+    .vgalert-wrapper {
+      padding-right: 50rem;
+    }
+  }
+
+  &:not(.vgalert-has-message),
+  &:not(.vgalert-has-title) {
+    align-items: center;
+  }
+}
+
+.vgalert-overlay {
+  position: fixed;
+  z-index: 9998;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: color-mix(in srgb, var(--text-fg_static-black) 20%, transparent);
+  cursor: not-allowed;
+}
+
+@keyframes vgalert-shake-anim {
+
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translateX(-5px);
+  }
+
+  40%,
+  60% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: none;
+  }
+}

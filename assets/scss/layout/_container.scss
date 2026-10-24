@@ -1,0 +1,48 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.container {
+    margin-inline: auto;
+    max-width: var(--container, 1760rem);
+    padding: 0 var(--container-padding-x, 0);
+
+    @media (max-width: $mobile) {
+        max-width: var(--container, 100%);
+        padding: 0 var(--container-padding-x, 16rem);
+    }
+
+    @media (max-width: $tablet) {
+        max-width: var(--container, 100%);
+        padding: 0 var(--container-padding-x, 24rem);
+    }
+
+    &-fluid {
+        margin-inline: auto;
+        max-width: var(--container-fluid, 1920rem);
+        width: 100%;
+				padding: 0 var(--container-padding-x, 20rem);
+
+        @media (max-width: $mobile) {
+            max-width: var(--container-fluid, 100%);
+            padding: 0 var(--container-padding-x, 16rem);
+        }
+
+        @media (max-width: $tablet) {
+            max-width: var(--container-fluid, 100%);
+            padding: 0 var(--container-padding-x, 24rem);
+        }
+    }
+
+    &-slim {
+        max-width: 1166rem;
+        padding: 0 var(--container-padding-x, 0);
+
+        @media (max-width: $tablet) {
+            max-width: 100%;
+        }
+    }
+}
+
+.main-content {
+    padding-top: calc(var(--header-height, 90rem) + var(--header-offset, 60rem));
+}

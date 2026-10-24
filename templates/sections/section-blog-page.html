@@ -1,0 +1,63 @@
+<section class="blog-page" aria-labelledby="blog-page-title" data-header-surface="light">
+  <div class="blog-page__header">
+    <div class="breadcrumbs" aria-label="Хлебные крошки">
+      <a href="/" class="breadcrumbs__link">Главная</a>
+      <span class="breadcrumbs__link current" aria-current="page">Блог</span>
+    </div>
+
+    <h1 class="blog-page__title" id="blog-page-title">Блог</h1>
+  </div>
+
+  <div class="blog-page__body">
+    <div class="blog-page__grid">
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+      <div class="blog-page__card">
+        @@include('/templates/components/article-card.html')
+      </div>
+    </div>
+
+    <nav class="pagination" aria-label="Пагинация блога">
+      <a class="pagination__link pagination__link--arrow prev slider-arrow slider-arrow--prev" href="#" aria-disabled="true" tabindex="-1" aria-label="Предыдущая страница"></a>
+      <div class="pagination__pages">
+        <a class="pagination__link pagination__link--number number current" href="/pages/archive.html" aria-current="page">1</a>
+        <a class="pagination__link pagination__link--number number" href="?page=2">2</a>
+        <a class="pagination__link pagination__link--number number" href="?page=3">3</a>
+        <a class="pagination__link pagination__link--number number" href="#" aria-disabled="true" tabindex="-1">...</a>
+        <a class="pagination__link pagination__link--number number" href="?page=10">10</a>
+      </div>
+      <a class="pagination__link pagination__link--arrow next slider-arrow slider-arrow--next" href="?page=2" aria-label="Следующая страница"></a>
+    </nav>
+  </div>
+</section>

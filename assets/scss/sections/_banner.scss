@@ -1,0 +1,48 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.banner {
+  min-height: 600rem;
+  max-width: 1920rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+
+  @include tablet{
+    min-height: 500rem;
+  }
+
+  @include mobile{
+    min-height: 440rem;
+    text-align: center;
+  }
+
+  &__bg {
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(0deg, color-mix(in srgb, var(--text-fg_static-black) 50%, transparent) 0%, color-mix(in srgb, var(--text-fg_static-black) 50%, transparent) 100%);
+    }
+  }
+
+  .section__text {
+    max-width: 635rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 840rem;
+    margin-left: auto;
+    margin-right: 0;
+
+    @include tablet{
+      max-width: 600rem;
+    }
+    
+  }
+}

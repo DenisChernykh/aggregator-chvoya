@@ -1,0 +1,191 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.reels {
+  overflow: hidden;
+
+  .swiper-slide {
+    width: auto;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    max-width: 150rem;
+
+    &__preview {
+      width: 120rem;
+      height: 120rem;
+      border-radius: 100%;
+      overflow: hidden;
+      border: 1.5rem solid var(--border-brand);
+      transition: transform 0.3s ease;
+      will-change: transform;
+      overflow: hidden;
+
+      @include mobile {
+        width: 69rem;
+        height: 69rem;
+        outline-offset: 5rem;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 8rem;
+        border-radius: 100%;
+        will-change: transform;
+      }
+    }
+
+    &__title {
+      width: 100%;
+      max-width: 100%;
+      color: var(--text-fg_default);
+      font-family: var(--font-main, 'Golos Text', Arial, Helvetica, sans-serif);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 18px;
+      @include lineClamp(2);
+
+      @include mobile {
+        font-size: 12px;
+        line-height: 16px;
+      }
+    }
+
+    @include hover {
+      .reels-item__preview {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.reels-modal {
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--text-fg_static-black) 75%, transparent) 0%,
+    color-mix(in srgb, var(--text-fg_static-black) 75%, transparent) 100%
+  );
+  z-index: 103;
+
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+  }
+
+  a.button,
+  button.button {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0) translateY(50rem);
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease,
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      height 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .swiper-slide {
+    [data-has-link='1'] {
+      button.button {
+        padding: 0 !important;
+        min-height: 0;
+        border-width: 0;
+      }
+    }
+
+    [data-has-link='0'] {
+      a.button {
+        padding: 0 !important;
+        min-height: 0;
+        border-width: 0;
+      }
+    }
+  }
+
+  &.opened {
+    .swiper-slide-active [data-has-link='0'] button.button,
+    .swiper-slide-active [data-has-link='1'] a.button {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+      height: auto;
+      pointer-events: auto;
+    }
+  }
+
+  &__close {
+    background: transparent;
+    color: var(--text-fg_static-white);
+    border: 0;
+  }
+
+  &__item {
+    border-radius: 24rem;
+    overflow: hidden;
+    margin-bottom: 15rem;
+    transform: scale(1);
+  }
+
+  &__footer {
+    position: relative;
+    top: unset;
+    left: unset;
+    bottom: unset;
+    width: 100%;
+    text-align: start;
+    height: auto;
+    color: var(--text-fg_static-white);
+    font-family: var(--font-main, 'Golos Text', Arial, Helvetica, sans-serif);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    transition: 0.3s ease;
+
+    > div {
+      @include lineClamp(3);
+    }
+  }
+
+  &__title {
+    min-width: 0;
+    font-family: var(--font-main, 'Golos Text', Arial, Helvetica, sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+
+    > div {
+      @include lineClamp(2);
+    }
+  }
+
+  .swiper-slide-active {
+    .reels-modal__cta {
+      transform: scale(1);
+    }
+
+    .reels-modal__footer {
+      height: 0;
+      opacity: 0;
+    }
+  }
+}

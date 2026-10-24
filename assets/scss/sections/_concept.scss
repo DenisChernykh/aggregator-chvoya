@@ -1,0 +1,83 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.concept {
+  background: radial-gradient(55.11% 100% at 49.77% 100%, var(--figma-white-10) 0%, color-mix(in srgb, var(--text-fg_static-black) 50%, transparent) 100%), var(--text-fg_static-black);
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60rem;
+
+    @include tablet{
+      gap: 40rem;
+    }
+
+    @include mobile {
+      gap: 32rem;
+    }
+
+    .section-header {
+      margin-bottom: 0;
+    }
+
+  }
+
+  &__image {
+    width: 262rem;
+    height: 40rem;
+
+    @include mobile {
+      width: 155rem;
+      height: 24rem;
+    }
+
+    & img {
+      object-fit: contain;
+    }
+  }
+
+  &__content {
+    max-width: 840rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40rem;
+
+    @include tablet{
+      gap: 20rem;
+    }
+
+    @include mobile {
+      gap: 4rem;
+    }
+
+    .section-title {
+      @include mobile {
+        margin-bottom: 8rem;
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20rem;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30rem;
+    color: var(--text-fg_static-white);
+
+    @include mobile {
+      margin-top: 24rem;
+    }
+
+  }
+}

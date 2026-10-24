@@ -1,0 +1,80 @@
+@use '../base/mixins' as *;
+
+.section {
+  padding: 80rem 0;
+  position: relative;
+  overflow: hidden;
+
+  > .container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 60rem;
+  }
+
+  @include tablet {
+    padding: 60rem 0;
+  }
+
+  @include mobile {
+    padding: 40px 0;
+
+    > .container {
+      gap: 24px;
+    }
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20rem;
+    width: 100%;
+    margin-inline: auto;
+
+    @include mobile {
+      gap: 12px;
+    }
+  }
+
+  &-title {
+    width: 100%;
+    margin: 0;
+    color: inherit;
+    font-family: var(
+      --font-hero-title,
+      'Manrope',
+      Arial,
+      Helvetica,
+      sans-serif
+    );
+    font-size: 48rem;
+    font-weight: 500;
+    line-height: 56rem;
+    text-transform: none;
+
+    @include mobile {
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  &-text {
+    width: 870rem;
+    max-width: 100%;
+    margin: 0;
+    color: var(--text-fg_muted);
+    font-family: var(--font-main, 'Golos Text', Arial, Helvetica, sans-serif);
+    font-size: 16rem;
+    font-weight: 400;
+    line-height: 24rem;
+
+    @include mobile {
+      width: 100%;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}

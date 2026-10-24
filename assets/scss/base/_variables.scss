@@ -1,0 +1,45 @@
+$mobile: 767px;
+$tablet: 1199px;
+$desktop: 1919px;
+
+$transition: .25s ease;
+
+:root {
+  --font-main: 'Golos Text', Arial, Helvetica Neue, sans-serif;
+  --font-title: 'Manrope', Arial, Helvetica Neue, sans-serif;
+  --font-header: 'Golos Text', Arial, Helvetica Neue, sans-serif;
+  --font-hero-title: 'Manrope', Arial, Helvetica Neue, sans-serif;
+  --font-modal-title: 'Manrope', Arial, Helvetica Neue, sans-serif;
+
+  --container: 1800rem;
+  --container-fluid: 1920rem;
+  --container-padding-x: 20rem;
+
+  --base-400: hsl(40 1.19% 49.61%);
+  --figma-white-10: hsl(0 0% 100% / 10.2%);
+  --figma-white-60: hsl(0 0% 100% / 60%);
+  --figma-black: hsl(216 5.88% 16.67%);
+  --neutral-900: hsl(240 4% 4.9%);
+  --logo-yandex2: hsl(48 100% 50%);
+
+  --effect-test:
+    0 0.5rem 0 color-mix(in srgb, var(--text-fg_static-black) 15%, transparent),
+    inset 0 -0.5rem 0
+      color-mix(in srgb, var(--text-fg_static-black) 5%, transparent);
+}
+
+@media (max-width: $mobile) {
+  :root {
+    --container: 100%;
+    --container-fluid: 100%;
+    --container-padding-x: 16rem;
+  }
+}
+
+@media (min-width: $mobile) and (max-width: $tablet) {
+  :root {
+    --container: 100%;
+    --container-fluid: 100%;
+    --container-padding-x: 24rem;
+  }
+}

@@ -1,0 +1,546 @@
+@use "../base/mixins" as *;
+@use "../base/variables" as *;
+
+:root {
+    --modal-background: var(--bg-subtle);
+    --modal-border-radius: 20rem;
+    --modal-border: 1rem solid var(--border-default);
+    --modal-window-max-width: 574rem;
+    --modal-window-padding: 40rem;
+    --modal-body-padding: 0;
+    --modal-title-font: var(--font-main);
+    --modal-title-color: var(--text-fg_default);
+    --modal-text-color: var(--text-fg_default);
+}
+
+@media (max-width:$mobile) {
+    :root {
+        --modal-border-radius: 12rem;
+        --modal-window-max-width: 380rem;
+        --modal-window-padding: 20rem;
+        --modal-body-padding: 0;
+    }
+}
+
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .35s ease, visibility .3s ease;
+    background: linear-gradient(0deg, color-mix(in srgb, var(--text-fg_static-black) 50%, transparent) 0%, color-mix(in srgb, var(--text-fg_static-black) 50%, transparent) 100%);
+    padding: 24rem 0;
+
+    @media (max-width:$mobile) {
+        padding: 46rem var(--container-padding-x, 16rem) 90rem var(--container-padding-x, 16rem);
+    }
+
+    &-window {
+        border-radius: var(--modal-border-radius, 12rem);
+        border: var(--modal-border);
+        background: var(--modal-background);
+        padding: var(--modal-window-padding, 24rem);
+        position: relative;
+        z-index: 1;
+        max-width: var(--modal-window-max-width, 450rem);
+        width: 100%;
+        height: auto;
+        flex: 0 0 auto;
+        margin: auto;
+        overflow: hidden;
+        color: var(--modal-text-color);
+        transform: translateY(70rem);
+        transition: transform .3s ease;
+
+        &:before {
+            content: none;
+        }
+    }
+
+    &-close {
+        background: transparent;
+        border: 0;
+        position: absolute;
+        z-index: 3;
+        top: 40rem;
+        right: 40rem;
+        color: var(--text-fg_default);
+        cursor: pointer;
+        will-change: transform;
+        transition: opacity .3s ease;
+
+        @media (max-width:$mobile) {
+            top: 10rem;
+            right: 16rem;
+        }
+
+        &:before {
+            content: "";
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40' fill='none'%3E%3Cpath d='M30 10L10 30M10 10L30 30' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            width: 40rem;
+            height: 40rem;
+            background-color: currentColor;
+            will-change: transform;
+
+            @media (max-width:$mobile) {
+                width: 30rem;
+                height: 30rem;
+            }
+        }
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+
+    &-title {
+        margin-bottom: 20rem;
+        color: var(--modal-title-color);
+        text-align: center;
+        @include h4;
+    }
+
+    &-description {
+        color: var(--text-fg_muted);
+        text-align: center;
+        margin-bottom: 40rem;
+
+        @media (max-width:$mobile) {
+            margin-bottom: 24rem;
+        }
+    }
+
+    &-body {
+        padding: var(--modal-body-padding, 24rem);
+    }
+
+    &-footer {
+        margin-top: 20rem;
+    }
+
+    &-actions {
+        display: flex;
+        align-items: center;
+        gap: 20rem;
+
+        .button,
+        .btn {
+            flex: 1;
+        }
+    }
+
+    &.opened {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+
+        .modal-window {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            animation: modalCloseRotate 1s ease;
+        }
+    }
+}
+
+body.modal-opened {
+    overflow: hidden;
+}
+
+.modal--contact,
+.modal--success {
+    background: color-mix(in srgb, var(--text-fg_static-black) 50%, transparent);
+    padding: 24rem;
+
+    .modal-window {
+        display: flex;
+        flex-direction: column;
+        gap: 24rem;
+        width: min(574rem, calc(100vw - 48rem));
+        max-width: 574rem;
+        border-radius: 20rem;
+        color: var(--text-fg_default);
+        font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+    }
+
+    .modal-close {
+        top: 11rem;
+        right: 11rem;
+        display: flex;
+        width: 40rem;
+        height: 40rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100rem;
+        color: var(--text-fg_default);
+
+        &::before {
+            width: 24rem;
+            height: 24rem;
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M18 6L6 18M6 6L18 18' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        }
+    }
+
+    @media (max-width:$mobile) {
+        padding: 24rem 16rem;
+
+        .modal-window {
+            gap: 16rem;
+            width: min(380rem, calc(100vw - 32rem));
+            max-width: calc(100vw - 32rem);
+            padding: 20rem;
+            border-radius: 12rem;
+        }
+    }
+}
+
+.modal--contact {
+    --input-background: var(--bg-default);
+    --input-border-radius: 12rem;
+    --input-placeholder-color: var(--text-fg_subtle);
+
+    .modal-window {
+        background: var(--bg-default);
+    }
+
+    &__header,
+    &__body {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__header {
+        align-items: center;
+        gap: 12rem;
+        text-align: center;
+    }
+
+    .modal-title {
+        box-sizing: border-box;
+        width: 100%;
+        padding-inline: 44rem;
+        margin: 0;
+        color: var(--text-fg_default);
+        font-family: var(--font-modal-title, "Manrope", Arial, Helvetica, sans-serif);
+        font-size: 32rem;
+        font-weight: 500;
+        line-height: 40rem;
+        text-transform: none;
+    }
+
+    .modal-description {
+        margin: 0;
+        color: var(--text-fg_muted);
+        font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+        font-size: 14rem;
+        font-weight: 400;
+        line-height: 20rem;
+        letter-spacing: .14rem;
+    }
+
+    @media (max-width:$mobile) {
+        --input-border-radius: 8rem;
+
+        .modal-window {
+            background: var(--bg-subtle);
+        }
+
+        &__header {
+            gap: 8rem;
+        }
+
+        .modal-title {
+            padding-inline: 36rem;
+            font-size: 20rem;
+            line-height: 28rem;
+        }
+
+        .modal-description {
+            font-size: 12rem;
+            line-height: 16rem;
+            letter-spacing: 0;
+        }
+    }
+}
+
+.modal--success {
+    .modal-window {
+        background: var(--bg-default);
+    }
+
+    .modal__header {
+        display: flex;
+        flex-direction: column;
+        gap: 12rem;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal-title {
+        margin: 0;
+        color: var(--text-fg_default);
+        font-family: var(--font-modal-title, "Manrope", Arial, Helvetica, sans-serif);
+        font-size: 24rem;
+        font-weight: 500;
+        line-height: 32rem;
+    }
+
+    .modal-description {
+        margin: 0;
+        color: var(--text-fg_muted);
+        font-size: 14rem;
+        line-height: 20rem;
+        letter-spacing: .14rem;
+
+        br {
+            display: none;
+        }
+    }
+
+    @media (max-width:$mobile) {
+        .modal-window {
+            background: var(--bg-subtle);
+        }
+
+        .modal__header {
+            gap: 8rem;
+        }
+
+        .modal-title {
+            max-width: 220rem;
+            font-size: 20rem;
+            line-height: 28rem;
+        }
+
+        .modal-description {
+            font-size: 12rem;
+            line-height: 16rem;
+            letter-spacing: 0;
+        }
+    }
+}
+
+.modal-form {
+    --input-background: var(--bg-default);
+    --input-border-radius: 12rem;
+    --input-placeholder-color: var(--text-fg_subtle);
+
+    display: flex;
+    flex-direction: column;
+    gap: 32rem;
+    width: 100%;
+
+    &__fields,
+    &__bottom,
+    &__row {
+        display: flex;
+        width: 100%;
+    }
+
+    &__fields {
+        flex-direction: column;
+        gap: 12rem;
+    }
+
+    &__bottom {
+        flex-direction: column;
+        gap: 24rem;
+    }
+
+    &__bottom--row,
+    &__row {
+        align-items: flex-start;
+        gap: 12rem;
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+    }
+
+    &__field {
+        display: flex;
+        min-width: 0;
+        flex-direction: column;
+        gap: 8rem;
+        width: 100%;
+
+        .error-text,
+        span.error {
+            color: var(--fg-error);
+            font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+            font-size: 12rem;
+            font-weight: 400;
+            line-height: 16rem;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"] {
+            min-height: 56rem;
+            padding: 16rem 20rem;
+            border-radius: var(--input-border-radius);
+            background: var(--input-background);
+            font-size: 16rem;
+            line-height: 24rem;
+        }
+    }
+
+    &__label-text {
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        margin: -1rem;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+
+    &__policy {
+        display: flex;
+        align-items: center;
+        gap: 10rem;
+        min-width: 0;
+        color: var(--text-fg_subtle);
+        font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+        cursor: pointer;
+
+        input {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 auto;
+            width: 24rem;
+            height: 24rem;
+            margin: 0;
+            appearance: none;
+            border: 1rem solid var(--border-muted);
+            border-radius: 4rem;
+            background: transparent;
+            color: var(--brand-solid);
+            cursor: pointer;
+
+            &::after {
+                content: "";
+                width: 16rem;
+                height: 16rem;
+                mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M13.3333 4L6 11.3333L2.66667 8' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                mask-position: center;
+                mask-repeat: no-repeat;
+                mask-size: contain;
+                background-color: currentColor;
+                opacity: 0;
+                transform: scale(.7);
+                transition: opacity .2s ease, transform .2s ease;
+            }
+
+            &:checked::after {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            &:hover:not(:disabled),
+            &:focus-visible {
+                border-color: var(--brand-solid);
+                outline: none;
+            }
+
+            &:not(:checked).error {
+                border-color: var(--fg-error);
+                color: var(--fg-error);
+            }
+
+            &:focus-visible {
+                box-shadow: 0 0 0 2rem color-mix(in srgb, var(--brand-solid) 24%, transparent);
+            }
+        }
+
+        span {
+            flex: 1 1 auto;
+            min-width: 0;
+            color: var(--text-fg_subtle);
+            font-size: 12rem;
+            font-weight: 400;
+            line-height: 16rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-skip-ink: none;
+        }
+    }
+
+    &__button {
+        font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+    }
+
+    @media (max-width:$mobile) {
+        --input-border-radius: 8rem;
+
+        gap: 16rem;
+
+        &__bottom {
+            gap: 12rem;
+        }
+
+        &__bottom--row,
+        &__row {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12rem;
+        }
+
+        &__policy {
+            span {
+                font-size: 10rem;
+                line-height: 14rem;
+            }
+        }
+
+        &__button {
+            width: 100%;
+        }
+
+        &__field {
+            input[type="text"],
+            input[type="tel"],
+            input[type="email"] {
+                min-height: 52rem;
+                padding: 16rem 20rem;
+                font-size: 14rem;
+                line-height: 20rem;
+            }
+        }
+    }
+}
+
+@keyframes modalCloseRotate {
+    0% {
+        opacity: 0;
+        transform: rotate(-180deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(0);
+    }
+}

@@ -1,0 +1,87 @@
+/* Generated from assets/tokens.json by scripts/build-token-theme.mjs. */
+/* Do not edit manually; rerun npm run tokens:build-css. */
+
+:root {
+  /* Global color tokens */
+  --brand-100: #ebddc6;
+  --brand-200: #e4e4e7;
+  --brand-300: #178225;
+  --brand-400: #bbbbc3;
+  --brand-500: #0f5719;
+  --brand-600: #3f3f46;
+  --brand-700: #000000;
+  --brand-800: #27272a;
+  --colors-50: #ffffff;
+  --colors-100: #e8e8e8;
+  --colors-200: #4e4e4e;
+  --colors-300: #c8c8cc;
+  --colors-400: #666666;
+  --colors-500: #76787b;
+  --colors-600: #525456;
+  --colors-700: #3d3e40;
+  --colors-800: #2d2d2f;
+  --colors-850: #252628;
+  --colors-900: #1c1b19;
+  --colors-white: #f3f6f3;
+  --colors-black: #141f16;
+  --colors-error: #8a0f0f;
+  --white-alpha-0: rgba(255, 255, 255, 0);
+  --white-alpha-50: rgba(255, 255, 255, 0.05);
+  --white-alpha-100: rgba(255, 255, 255, 0.1);
+  --white-alpha-200: rgba(255, 255, 255, 0.2);
+  --white-alpha-300: rgba(255, 255, 255, 0.3);
+  --white-alpha-400: rgba(255, 255, 255, 0.4);
+  --white-alpha-500: rgba(255, 255, 255, 0.5);
+  --white-alpha-600: rgba(255, 255, 255, 0.6);
+  --white-alpha-700: rgba(255, 255, 255, 0.7);
+  --white-alpha-800: rgba(255, 255, 255, 0.8);
+  --white-alpha-900: rgba(255, 255, 255, 0.9);
+  --black-alpha-0: rgba(0, 0, 0, 0);
+  --black-alpha-50: rgba(0, 0, 0, 0.05);
+  --black-alpha-100: rgba(0, 0, 0, 0.1);
+  --black-alpha-200: rgba(0, 0, 0, 0.2);
+  --black-alpha-300: rgba(0, 0, 0, 0.3);
+  --black-alpha-400: rgba(0, 0, 0, 0.4);
+  --black-alpha-500: rgba(0, 0, 0, 0.5);
+  --black-alpha-600: rgba(0, 0, 0, 0.6);
+  --black-alpha-700: rgba(0, 0, 0, 0.7);
+  --black-alpha-800: rgba(0, 0, 0, 0.8);
+  --black-alpha-900: rgba(0, 0, 0, 0.9);
+
+  /* Semantic color tokens */
+  --bg-default: var(--colors-white);
+  --bg-subtle: var(--colors-50);
+  --bg-muted: var(--colors-100);
+  --bg-emphasized: var(--colors-200);
+  --bg-inverted: var(--colors-black);
+  --bg-panel: var(--colors-100);
+  --bg-glass: var(--white-alpha-100);
+  --bg-footer: var(--colors-black);
+  --fg-default: var(--colors-900);
+  --fg-subtle: var(--colors-400);
+  --fg-muted: var(--colors-600);
+  --fg-inverted: var(--colors-white);
+  --fg-static-white: var(--colors-white);
+  --fg-error: var(--colors-error);
+  --border-default: var(--colors-300);
+  --border-subtle: var(--colors-100);
+  --border-muted: var(--colors-200);
+  --border-emphasized: var(--colors-400);
+  --border-inverted: var(--colors-black);
+  --border-brand: var(--brand-500);
+  --border-focus-ring: var(--brand-500);
+  --border-static-white: var(--colors-white);
+  --border-static-black: var(--colors-black);
+  --text-fg_default: var(--colors-black);
+  --text-fg_subtle: var(--colors-400);
+  --text-fg_muted: var(--colors-600);
+  --text-fg_inverted: var(--colors-white);
+  --text-fg_brand: var(--brand-500);
+  --text-fg_static-white: var(--colors-white);
+  --text-fg_static-black: var(--colors-black);
+  --brand-solid: var(--brand-500);
+  --brand-subtle: var(--brand-100);
+  --brand-muted: var(--brand-600);
+  --brand-fg: var(--brand-300);
+  --brand-emphasized: var(--brand-700);
+}

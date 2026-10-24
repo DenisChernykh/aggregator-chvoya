@@ -1,0 +1,176 @@
+<!-- <div class="modal modal--age" data-modal="modalAge" data-modal-type="confirm">
+    <div class="modal-window">
+        <div class="modal-title">Добро пожаловать на наш сайт ресторана</div>
+        <div class="modal-description">
+            Вам уже исполнилось 18 лет?
+        </div>
+        <div class="modal-actions">
+            <button type="button" class="button button--primary button--100 has-arrow" data-modal-action="confirm">
+                <span>Мне есть 18 лет</span>
+            </button>
+            <button type="button" class="button button--glass button--100 has-arrow" data-modal-action="cancel">
+                <span>Мне еще нет 18 лет</span>
+            </button>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="modal modal--success" data-modal-type="confirm" data-modal="modalAgeDeny">
+    <div class="modal-window">
+        <div class="modal-title">Доступ запрещен</div>
+        <div class="modal-description">
+            Доступ на сайт для лиц младше 18 лет запрещен.
+        </div>
+    </div>
+</div> -->
+
+<div class="modal modal--contact" data-modal="modalContact" aria-labelledby="modalContactTitle">
+    <div class="modal-window">
+        <button type="button" class="modal-close" data-modal-close="modalContact" aria-label="Закрыть"></button>
+
+        <div class="modal--contact__header">
+            <div class="modal-title" id="modalContactTitle">Мы всегда на связи</div>
+            <div class="modal-description">
+                Оставьте ваши контактные данные. Наш&nbsp;специалист перезвонит вам&nbsp;в&nbsp;ближайшее время, чтобы&nbsp;ответить на&nbsp;вопросы или&nbsp;помочь с&nbsp;бронированием.
+            </div>
+        </div>
+
+        <form class="modal--contact__body modal-form" action="" data-action="/ajax/form" data-method="POST" data-form-validator>
+            <input type="hidden" name="_token" value="sQSGV5vtCsZp8zBDHL9uI5Ek0WIlw9Uouc54ywkM">
+            <div class="modal-form__fields">
+                <label class="modal-form__field">
+                    <span class="modal-form__label-text">Имя</span>
+                    <input type="text" name="name" placeholder="Иван" autocomplete="name">
+                </label>
+                <label class="modal-form__field">
+                    <span class="modal-form__label-text">Номер телефона</span>
+                    <input type="tel" name="phone" placeholder="+7 (900) 900-90-90" autocomplete="tel">
+                </label>
+            </div>
+
+            <div class="modal-form__bottom">
+                <label class="modal-form__policy">
+                    <input type="checkbox" name="agree">
+                    <span>
+                        Я&nbsp;согласен с&nbsp;<a href="#" target="_blank" rel="noindex noopener noreferrer">политикой конфиденциальности</a> и&nbsp;даю&nbsp;согласие на&nbsp;обработку персональных данных
+                    </span>
+                </label>
+
+                <button type="submit" class="modal-form__button button button--primary button--block">Оставить заявку</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal modal--vacancy" data-modal="modalVacancy" aria-labelledby="modalVacancyTitle">
+    <div class="modal-window">
+        <button type="button" class="modal-close" data-modal-close="modalVacancy" aria-label="Закрыть"></button>
+
+        <div class="vacancy-modal">
+            <div class="vacancy-modal__main">
+                <h2 class="vacancy-modal__title" id="modalVacancyTitle" data-vacancy-modal-title></h2>
+
+                <div class="vacancy-modal__details">
+                    <div class="vacancy-modal__description" data-vacancy-modal-description></div>
+
+                    <div class="vacancy-modal__contact" data-vacancy-modal-contact></div>
+                </div>
+            </div>
+
+            <div class="vacancy-modal__response" aria-label="Откликнуться">
+                <h3 class="vacancy-modal__response-title">Откликнуться</h3>
+
+                <div class="vacancy-modal__response-body">
+                    <button class="vacancy-modal__submit button button--primary" type="button"
+                        data-modal-id="modalContact"
+                        data-modal-title="Сделайте шаг к новой работе"
+                        data-modal-description="Заполните обязательные поля и отправьте заявку">Оставить заявку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal--room" data-modal="modalRoom" aria-labelledby="modalRoomTitle">
+    <div class="modal-window">
+        <button type="button" class="modal-close" data-modal-close="modalRoom" aria-label="Закрыть"></button>
+
+        <article class="room-modal">
+            <div class="room-modal__media">
+                <div class="room-modal__slider swiper" data-room-modal-slider>
+                    <div class="room-modal__slides swiper-wrapper" data-room-modal-gallery>
+                        <div class="room-modal__slide swiper-slide">
+                            <img src="/assets/images/rooms/deluxe-panorama.webp" alt="" loading="lazy" data-room-modal-image data-transfer-src-modal="image">
+                        </div>
+                    </div>
+                </div>
+                <div class="room-modal__media-controls">
+                    <div class="room-modal__dots slider-bullets" data-room-modal-pagination aria-label="Переключить фото номера"></div>
+                    <div class="room-modal__arrows" aria-label="Навигация по фото номера">
+                        <button class="room-modal__arrow room-modal__arrow--prev slider-arrow slider-arrow--prev" type="button" aria-label="Предыдущее фото" data-room-modal-prev></button>
+                        <button class="room-modal__arrow room-modal__arrow--next slider-arrow slider-arrow--next" type="button" aria-label="Следующее фото" data-room-modal-next></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-modal__body">
+                <div class="room-modal__content">
+                    <div class="room-modal__copy">
+                        <h2 class="room-modal__title" id="modalRoomTitle" data-transfer-text-modal="title"></h2>
+                        <div class="room-modal__text" data-transfer-text-modal="description"></div>
+                    </div>
+
+                    <div class="room-modal__features-group">
+                        <h3 class="room-modal__subtitle">Характеристики:</h3>
+                        <ul class="room-modal__features" data-transfer-text-modal="features"></ul>
+                    </div>
+                </div>
+
+                <div class="room-modal__footer">
+                    <div class="room-modal__price" data-transfer-text-modal="price"></div>
+                    <form class="room-modal__form modal-form modal-form--inline" action="" data-action="/ajax/form" data-method="POST" data-form-validator>
+                        <input type="hidden" name="_token" value="sQSGV5vtCsZp8zBDHL9uI5Ek0WIlw9Uouc54ywkM">
+                        <div class="modal-form__row">
+                            <label class="modal-form__field">
+                                <span class="modal-form__label-text">Имя</span>
+                                <input type="text" name="name" placeholder="Иван" autocomplete="name">
+                            </label>
+                            <label class="modal-form__field">
+                                <span class="modal-form__label-text">Номер телефона</span>
+                                <input type="tel" name="phone" placeholder="+7 (900) 900-90-90" autocomplete="tel">
+                            </label>
+                        </div>
+                        <div class="modal-form__bottom modal-form__bottom--row">
+                            <label class="modal-form__policy">
+                                <input type="checkbox" name="agree">
+                                <span>
+                                    Я&nbsp;согласен с&nbsp;<a href="#" target="_blank" rel="noindex noopener noreferrer">политикой конфиденциальности</a> и&nbsp;даю&nbsp;согласие на&nbsp;обработку персональных данных
+                                </span>
+                            </label>
+                            <button class="room-modal__button modal-form__button button button--primary" type="submit">Бронировать</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+
+<div class="modal modal--success" data-modal="modalSuccess">
+    <div class="modal-window">
+        <button type="button" class="modal-close" data-modal-close="modalSuccess" aria-label="Закрыть"></button>
+        <div class="modal__header">
+            <div class="modal-title">Ваша заявка успешно отправлена</div>
+            <div class="modal-description">
+                Спасибо! Мы получили запрос и скоро свяжемся, чтобы <br>подтвердить детали.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal--reviews" data-modal="modalReviews" aria-label="Полный текст отзыва">
+    <div class="modal-window">
+        <button type="button" class="modal-close" data-modal-close="modalReviews" aria-label="Закрыть"></button>
+        <div class="modal__reviews-content" data-reviews-modal-content></div>
+    </div>
+</div>

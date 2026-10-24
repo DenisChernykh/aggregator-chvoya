@@ -1,0 +1,63 @@
+@use '../base/mixins' as *;
+
+.section.booking-cta {
+  padding: 80rem 0;
+  text-align: center;
+
+  > .container {
+    gap: 40rem;
+    align-items: center;
+  }
+
+  @include mobile {
+    padding: 40px 0;
+
+    > .container {
+      gap: 32px;
+    }
+  }
+}
+
+.booking-cta {
+  &__logo {
+    display: block;
+    width: 176rem;
+    height: 52rem;
+    object-fit: contain;
+    flex: 0 0 auto;
+  }
+
+  .section-header {
+    gap: 24rem;
+    max-width: 1166rem;
+  }
+
+  .section-text {
+    width: 872rem;
+  }
+
+  &__button {
+    flex: 0 0 auto;
+    margin-top: 20rem;
+  }
+
+  @include mobile {
+    &__logo {
+      width: 106px;
+      height: 33px;
+    }
+
+    .section-header {
+      gap: 12px;
+    }
+
+    .section-text {
+      width: 100%;
+    }
+
+    &__button {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+}

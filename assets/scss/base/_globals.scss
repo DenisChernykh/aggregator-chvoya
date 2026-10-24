@@ -1,0 +1,216 @@
+@use './variables' as *;
+@use './mixins' as *;
+@use 'sass:string';
+
+html {
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  scroll-padding: var(--header-height, 90rem);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  scroll-padding: 80px;
+  font-size: string.unquote("calc(100vw/1920)");
+
+  @include mobile {
+    font-size: string.unquote("calc(100vw/360)");
+  }
+
+  @include tablet {
+    font-size: string.unquote("calc(100vw/1200)");
+  }
+
+  @media (min-width: 2560px) {
+    font-size: string.unquote("calc(100vw/3440)");
+  }
+}
+
+html.is-locked,
+body.is-locked {
+  overflow: hidden;
+  height: 100%;
+}
+
+[data-move-placeholder] {
+  display: none;
+}
+
+html,
+body {
+  @include mobile {
+    scroll-padding: var(--header-height, 74rem);
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  background: var(--bg-default);
+  color: var(--text-fg_default);
+  font-size: 16rem;
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  width: 100vw;
+  overflow-x: hidden;
+
+  &.lock-scroll {
+    overflow: hidden;
+  }
+}
+
+h1,
+.h1 {
+  @include h1;
+}
+
+h2,
+.h2 {
+  @include h2;
+}
+
+h3,
+.h3 {
+  @include h3;
+}
+
+h4,
+.h4 {
+  @include h4;
+}
+
+.heading {
+  @include h2;
+}
+
+.subtitle {
+  color: var(--brand-solid);
+}
+
+.description {
+  color: var(--text-fg_muted);
+  @include bodytextreg;
+}
+
+.content {
+  color: var(--text-fg_static-black);
+
+  :is(h1, h2, h3, h4, h5) {
+    margin-bottom: 20rem;
+
+    @media (max-width:$mobile) {
+      margin-bottom: 10rem;
+    }
+
+    >strong {
+      font-weight: inherit;
+    }
+  }
+
+  :is(p, ul, img, table, div) {
+    margin-bottom: 20rem;
+
+    @media (max-width:$mobile) {
+      margin-bottom: 16rem;
+    }
+
+    &:has(+ :is(ul, ol)) {
+      margin-bottom: 20rem;
+
+      @media (max-width:$mobile) {
+        margin-bottom: 10rem;
+      }
+    }
+  }
+
+  :is(ul, ol) {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+    margin: 0;
+    margin-bottom: 30rem;
+    padding: 0;
+
+    &:has(+ :is(p, img, table, div)) {
+      margin-bottom: 20rem;
+    }
+
+    li {
+      div {
+        margin: 0;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ol {
+    margin-left: 20rem;
+
+    @media (max-width:$mobile) {
+      margin-left: 16rem;
+    }
+  }
+
+  ul {
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 20rem;
+
+      @media (max-width:$mobile) {
+        padding-left: 18rem;
+      }
+
+      &:before {
+        content: "";
+        flex: 0 0 auto;
+        display: block;
+        width: 10rem;
+        height: 10rem;
+        border-radius: 2rem;
+        background-color: var(--brand-subtle);
+        position: absolute;
+        top: 6rem;
+        left: 0;
+        user-select: none;
+        pointer-events: none;
+
+        @media (max-width:$mobile) {
+          top: 4rem;
+          width: 8rem;
+          height: 8rem;
+        }
+      }
+    }
+  }
+
+  :is(p, div) {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  img {
+    height: auto;
+  }
+}
+
+.br-mobile,
+.show-mobile {
+  @media (min-width:767px) {
+    display: none !important;
+  }
+}
+
+.br-desktop,
+.show-desktop {
+  @media (max-width:767px) {
+    display: none !important;
+  }
+}

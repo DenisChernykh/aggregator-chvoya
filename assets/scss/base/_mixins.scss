@@ -1,0 +1,217 @@
+@use "variables" as *;
+@use "sass:map";
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $mobile) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin fromtablet {
+  @media (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin fromdesktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content
+  }
+
+  &:-moz-placeholder {
+    @content
+  }
+
+  &::-moz-placeholder {
+    @content
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin lineClamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin iconMask($url, $size) {
+  mask-image: url($url);
+  width: $size;
+  height: $size;
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: currentColor;
+}
+
+@mixin custom-scrollbar($width: 6rem,
+  $thumb-color: $grey-300,
+  $track-color: transparent,
+  $radius: 10rem) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: $radius;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+    border-radius: $radius;
+  }
+}
+
+@mixin h1 {
+  font-family: var(--font-title, "Manrope");
+  font-size: 64rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 72rem;
+  text-transform: none;
+
+  @include tablet {
+    font-size: 48rem;
+    line-height: 56rem;
+  }
+
+  @include mobile {
+    font-size: 32rem;
+    line-height: 40rem;
+  }
+}
+
+@mixin h2 {
+  font-family: var(--font-title, "Manrope");
+  font-size: 48rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 56rem;
+  text-transform: none;
+
+  @include tablet {
+    font-size: 40rem;
+    line-height: 48rem;
+  }
+
+  @include mobile {
+    font-size: 24rem;
+    line-height: 32rem;
+  }
+}
+
+@mixin h3 {
+  font-family: var(--font-title, "Manrope");
+  font-size: 32rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40rem;
+
+  @include tablet {
+    font-size: 28rem;
+    line-height: 36rem;
+  }
+
+  @include mobile {
+    font-size: 20rem;
+    line-height: 28rem;
+  }
+}
+
+@mixin h4 {
+  font-family: var(--font-title, "Manrope");
+  font-size: 24rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32rem;
+
+  @include tablet {
+    font-size: 20rem;
+    line-height: 28rem;
+  }
+
+  @include mobile {
+    font-size: 18rem;
+    line-height: 28rem;
+  }
+}
+
+@mixin bodytextreg {
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 16rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24rem;
+}
+
+@mixin bigtextmed {
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 20rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28rem;
+}
+
+@mixin bodytextsb {
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 16rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24rem;
+}
+
+@mixin bigtextreg {
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 20rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28rem;
+}
+
+@mixin smalltextreg {
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 16rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24rem;
+}
+
+@mixin captionreg {
+  font-family: var(--font-main, "Golos Text", Arial, Helvetica, sans-serif);
+  font-size: 14rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20rem;
+}

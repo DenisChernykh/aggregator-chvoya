@@ -1,0 +1,234 @@
+@use '../base/mixins' as *;
+
+.section.hotel-benefits {
+  padding-top: 100rem;
+  padding-bottom: 20rem;
+
+  @include tablet {
+    padding: 60rem 0;
+  }
+
+  @include mobile {
+    padding: 60px 0;
+  }
+}
+
+.section.hotel-benefits > .container {
+  z-index: 3;
+  min-height: 780rem;
+  justify-content: space-between;
+
+  @include tablet {
+    min-height: 640rem;
+  }
+
+  @include mobile {
+    min-height: 504px;
+  }
+}
+
+.hotel-benefits {
+  position: relative;
+  display: flex;
+  min-height: 900rem;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--text-fg_static-white);
+
+  &__bg,
+  &__bg img,
+  &__shade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__bg img {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__shade {
+    z-index: 1;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 7.31%, rgba(0, 0, 0, 0) 44.91%);
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 40rem;
+    background: var(--bg-default);
+    pointer-events: none;
+  }
+
+  &::before {
+    top: 0;
+    border-radius: 0 0 32rem 32rem;
+  }
+
+  &::after {
+    bottom: 0;
+    border-radius: 32rem 32rem 0 0;
+  }
+
+  .section-text {
+    width: 870rem;
+    color: var(--text-fg_static-white);
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20rem;
+    width: 100%;
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    height: 340rem;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 40rem;
+    border-radius: 20rem;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20rem);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--text-fg_static-white) 12%, transparent) 0,
+        color-mix(in srgb, var(--text-fg_static-white) 12%, transparent) 1rem,
+        transparent 1rem,
+        transparent 8rem
+      );
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &__card-title {
+    position: relative;
+    z-index: 1;
+    color: var(--text-fg_static-white);
+    font-family: var(--font-hero-title, 'Manrope', Arial, Helvetica, sans-serif);
+    font-size: 24rem;
+    font-weight: 500;
+    line-height: 32rem;
+  }
+
+  &__card-text {
+    position: relative;
+    z-index: 1;
+    color: var(--text-fg_static-white);
+    font-family: var(--font-main, 'Golos Text', Arial, Helvetica, sans-serif);
+    font-size: 16rem;
+    font-weight: 400;
+    line-height: 24rem;
+  }
+
+  @include tablet {
+    min-height: 760rem;
+
+    &__cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &__card {
+      height: 280rem;
+    }
+  }
+
+  @include mobile {
+    min-height: 624px;
+
+    &__bg img {
+      object-position: center;
+    }
+
+    &__cards {
+      --hotel-benefits-scroll-offset: var(--container-padding-x, 16rem);
+
+      display: flex;
+      gap: 0;
+      width: calc(
+        100% + var(--hotel-benefits-scroll-offset) +
+          var(--hotel-benefits-scroll-offset)
+      );
+      overflow-x: auto;
+      overflow-y: hidden;
+      margin-inline: calc(0rem - var(--hotel-benefits-scroll-offset));
+      padding-inline: 0;
+      scroll-padding-inline: var(--hotel-benefits-scroll-offset);
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        flex: 0 0 var(--hotel-benefits-scroll-offset);
+      }
+    }
+
+    &__card {
+      flex: 0 0 300px;
+      height: 200px;
+      margin-right: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(20px);
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      &::after {
+        background: repeating-linear-gradient(
+          135deg,
+          color-mix(in srgb, var(--text-fg_static-white) 12%, transparent) 0,
+          color-mix(in srgb, var(--text-fg_static-white) 12%, transparent) 1px,
+          transparent 1px,
+          transparent 8px
+        );
+      }
+    }
+
+    &__card-title {
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    &__card-text {
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: 20px;
+    }
+
+    &::before,
+    &::after {
+      height: 20px;
+    }
+
+    &::before {
+      border-radius: 0 0 32px 32px;
+    }
+
+    &::after {
+      border-radius: 32px 32px 0 0;
+    }
+  }
+}

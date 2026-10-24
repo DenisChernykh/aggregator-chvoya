@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'Golos Text';
+  src: local('Golos Text Regular'), local('GolosText-Regular'),
+    url('../../fonts/GolosText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Golos Text';
+  src: local('Golos Text SemiBold'), local('GolosText-SemiBold'),
+    url('../../fonts/GolosText-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: local('Manrope Medium'), local('Manrope-Medium'),
+    url('../../fonts/Manrope-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}

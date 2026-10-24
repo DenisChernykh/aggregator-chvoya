@@ -1,0 +1,25 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.nav {
+    display: flex;
+    align-items: center;
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        gap: 20rem;
+
+        li {
+            color: var(--text-fg_default);
+            @include smalltextreg;
+
+            >a {
+                color: inherit;
+                display: flex;
+                align-items: center;
+                gap: 10rem;
+            }
+        }
+    }
+}

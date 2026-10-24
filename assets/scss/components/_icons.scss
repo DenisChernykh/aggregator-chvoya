@@ -1,0 +1,146 @@
+// @use '../icons.generated';
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+$icons-path: '../images/icons/';
+
+.icon {
+  position: relative;
+  line-height: 1;
+  vertical-align: middle;
+
+  &::before,
+  &::after {
+    content: '';
+    display: inline-flex;
+    align-items: center;
+    width: 24rem;
+    height: 24rem;
+
+    @include mobile {
+      width: 20rem;
+      height: 20rem;
+    }
+
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  &::after {
+    content: none;
+  }
+
+  &.icon--after {
+    &::before {
+      content: none;
+    }
+
+    &::after {
+      content: '';
+    }
+  }
+}
+
+.icon--calendar {
+  &::before {
+    mask-image: url('#{$icons-path}calendar.svg');
+  }
+}
+
+.icon--calendar-clock {
+  &::before {
+    mask-image: url('#{$icons-path}calendar-clock.svg');
+  }
+}
+
+.icon--clock {
+  &::before {
+    mask-image: url('#{$icons-path}clock.svg');
+  }
+}
+
+.icon.icon--after.icon--clock {
+  &::after {
+    mask-image: url('#{$icons-path}clock.svg');
+  }
+}
+
+.icon--eye {
+  &::before {
+    mask-image: url('#{$icons-path}eye.svg');
+  }
+}
+
+.icon--tel {
+  &::before {
+    mask-image: url('#{$icons-path}tel-black.svg');
+  }
+}
+
+.icon--rutube {
+  &::before {
+    mask-image: url('#{$icons-path}rutube.svg');
+  }
+}
+
+.icon--vk {
+  &::before {
+    mask-image: url('#{$icons-path}vk.svg');
+  }
+}
+
+.icon--ok {
+  &::before {
+    mask-image: url('#{$icons-path}ok.svg');
+  }
+}
+
+.icon--telegram {
+  &::before {
+    mask-image: url('#{$icons-path}telegram.svg');
+  }
+}
+
+.icon--max {
+  &::before {
+    mask-image: url('#{$icons-path}max.svg');
+  }
+}
+
+.icon--link {
+  &::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+}
+
+.icon--eye {
+  &::before {
+    mask-image: url('#{$icons-path}eye.svg');
+  }
+}
+
+.icon--phone {
+  &::before {
+    mask-image: url('#{$icons-path}phone.svg');
+  }
+}
+
+.icon--taxi {
+  &::before {
+    background-color: transparent;
+    background-image: url('#{$icons-path}yandex-taxi.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.icon--location {
+  &:before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24' fill='none'%3E%3Cpath d='M19.7183 7.8439C18.5352 2.43512 13.9944 0 10.0056 0C10.0056 0 10.0056 0 9.99436 0C6.01689 0 1.46477 2.42341 0.281666 7.83219C-1.03665 13.8732 2.52393 18.9893 5.74647 22.2088C6.94084 23.4029 8.47324 24 10.0056 24C11.538 24 13.0704 23.4029 14.2535 22.2088C17.4761 18.9893 21.0366 13.8849 19.7183 7.8439ZM10.0056 13.7093C8.04506 13.7093 6.45633 12.0585 6.45633 10.0215C6.45633 7.98439 8.04506 6.33366 10.0056 6.33366C11.9662 6.33366 13.5549 7.98439 13.5549 10.0215C13.5549 12.0585 11.9662 13.7093 10.0056 13.7093Z' fill='%23418B45'/%3E%3C/svg%3E");
+  }
+}

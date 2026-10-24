@@ -1,0 +1,120 @@
+<footer class="footer" id="footer" data-header-surface="dark">
+	<div class="footer__top">
+		<a class="footer__logo" href="/" aria-label="Хвоя">
+			<img src="/assets/images/header/logo-compact.svg" alt="Хвоя" loading="lazy">
+		</a>
+
+		<nav class="footer__nav" aria-label="Навигация по странице">
+			<ul class="footer__nav-list">
+				<li><a href="#booking-start">Об отеле</a></li>
+				<li><a href="#rooms">Номера</a></li>
+				<li><a href="#promos">Акции</a></li>
+				<li><a href="#services">Услуги</a></li>
+				<li><a href="#reviews">Отзывы</a></li>
+				<li><a href="#gallery">Галерея</a></li>
+				<li><a href="#blog">Статьи</a></li>
+				<li><a href="#contacts">Контакты</a></li>
+			</ul>
+		</nav>
+
+		<div class="intro-rating" aria-label="Рейтинг 5,0 на Яндексе, отзывов 300+">
+			<img class="intro-rating__logo" src="/assets/images/icons/yandex-good-place.svg" alt="">
+			<div class="intro-rating__stars" aria-hidden="true">
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<strong>5,0</strong>
+			<span class="intro-rating__reviews">Отзывов 300+</span>
+		</div>
+	</div>
+
+	<div class="footer__media">
+		<img src="/assets/images/figma/footer-panorama.webp" alt="" loading="lazy">
+	</div>
+
+	<address class="footer__contacts" aria-label="Контакты">
+		<div class="footer__contact footer__contact--address">
+			<span>г.&nbsp;Тула, ул.&nbsp;Советская&nbsp;47</span>
+			<span>ТЦ&nbsp;Гостиный двор 5&nbsp;этаж</span>
+		</div>
+
+		<div class="footer__contact footer__contact--phones">
+			<a href="tel:+79990000000">+ 7&nbsp;(487)&nbsp;236&ndash;01&ndash;51</a>
+			<a href="tel:+79990000000">+7&nbsp;(910)&nbsp;700-13-32</a>
+		</div>
+
+		<div class="footer__contact footer__contact--schedule">
+			<div><span>ВС&nbsp;&ndash;&nbsp;ЧТ:</span> 12:00&nbsp;&ndash;&nbsp;23:00</div>
+			<div><span>ПТ&nbsp;&ndash;&nbsp;СБ:</span> 12:00&nbsp;&ndash;&nbsp;03:00</div>
+		</div>
+
+		<div class="footer__contact footer__contact--email">
+			<a href="mailto:contact@example.test">contact@example.test</a>
+		</div>
+
+		<div class="footer__socials" aria-label="Социальные сети">
+			<a class="footer__social social-link social-link--sm" href="#" aria-label="Telegram">
+				<img src="/assets/images/icons/telegram.svg" alt="" loading="lazy">
+			</a>
+			<a class="footer__social social-link social-link--sm social-link--vk" href="#" aria-label="ВКонтакте">
+				<img src="/assets/images/icons/vk.svg" alt="" loading="lazy">
+			</a>
+			<a class="footer__social social-link social-link--sm social-link--rutube" href="#" aria-label="Rutube">
+				<img src="/assets/images/icons/rutube.svg" alt="" loading="lazy">
+			</a>
+			<a class="footer__social social-link social-link--sm social-link--ok" href="#" aria-label="Одноклассники">
+				<img src="/assets/images/icons/ok.svg" alt="" loading="lazy">
+			</a>
+		</div>
+	</address>
+
+	<div class="footer__legal" aria-label="Правовая информация">
+		<a href="#">Политика конфиденциальности</a>
+		<span>© 2026, ООО&nbsp;«Гостинница». Все&nbsp;права защищены.</span>
+	</div>
+</footer>
+
+<div class="panel-contact">
+	<a href="" target="_blank" rel="nofollow noindex"
+		class="panel-contact__button panel-contact__button--tg social-link social-link--float"></a>
+	<a href="" target="_blank" rel="nofollow noindex"
+		class="panel-contact__button panel-contact__button--vk social-link social-link--float social-link--vk"></a>
+	<a href="" target="_blank" rel="nofollow noindex"
+		class="panel-contact__button panel-contact__button--max social-link social-link--float social-link--max"></a>
+	<a href="" target="_blank" rel="nofollow noindex"
+		class="panel-contact__button panel-contact__button--odnoklassniki social-link social-link--float social-link--ok"></a>
+	<a href="" target="_blank" rel="nofollow noindex"
+		class="panel-contact__button panel-contact__button--rutube social-link social-link--float social-link--rutube"></a>
+	<a href="tel:+79999999999"
+		class="panel-contact__button panel-contact__button--phone social-link social-link--float social-link--phone"></a>
+</div>
+
+@@include('/templates/components/modals.html')
+
+
+<script>
+	window.themeSettings = {
+		cookieConsent: {
+			type: "compact",
+			theme: "light",
+			showIcon: false,
+			showButtonClose: false,
+			showButtonReject: false,
+			positionX: "right",
+			positionY: "bottom",
+			cookieTitle: "Мы используем cookie",
+			cookieTextHTML: `<div>Во время посещения сайта вы соглашаетесь с тем, что мы обрабатываем ваши персональные данные с использованием метрических программ.</div>`,
+			buttonAcceptText: "Ок",
+			expireDays: 1,
+			
+		}
+	};
+</script>
+
+<script type="module" src="/assets/js/main.js"></script>
+</body>
+
+</html>

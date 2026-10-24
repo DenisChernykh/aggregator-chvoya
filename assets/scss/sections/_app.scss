@@ -1,0 +1,205 @@
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.app {
+  &.section {
+    padding: 60rem 0;
+
+    @include mobile {
+      padding: 20rem 0;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 840rem);
+    justify-content: space-between;
+    gap: 50rem;
+    width: 100%;
+    min-height: 600rem;
+    border: 1rem solid var(--border-inverted);
+    background: radial-gradient(55.11% 100% at 49.77% 100%, color-mix(in srgb, var(--brand-solid) 50%, transparent) 0%, color-mix(in srgb, var(--text-fg_static-black) 50%, transparent) 100%), var(--bg-default);
+    overflow: hidden;
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 42rem;
+    }
+  }
+
+  &__left {
+    width: 100%;
+    position: relative;
+  }
+
+  &__image {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include mobile {
+      position: relative;
+      bottom: unset;
+      left: unset;
+      right: unset;
+      width: 100%;
+      height: auto;
+
+      img{
+        margin-top: auto;
+        height: auto;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60rem 60rem 60rem 0;
+
+    @include mobile {
+      padding: 40rem 20rem 0;
+    }
+
+    .section-header {
+      gap: 30rem;
+
+      @include mobile {
+        gap: 12rem;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    gap: 30rem;
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20rem;
+    }
+  }
+
+  &__qr {
+    width: 139rem;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      display: none;
+    }
+
+    & img {
+      object-fit: contain;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1rem solid var(--border-inverted);
+
+    @include mobile {
+      flex-wrap: wrap;
+    }
+  }
+
+
+  &__link {
+    padding: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1rem solid var(--border-inverted);
+    transition: opacity $transition, outline-color $transition;
+    outline: 1rem solid transparent;
+
+    @include hover {
+      outline-color: var(--text-fg_static-white);
+    }
+
+    @include hover {
+      opacity: 0.7;
+    }
+
+    @include mobile {
+      flex: 1 1 142rem;
+      padding: 12rem;
+      border-right: none;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:first-child {
+      @include mobile {
+        border-right: 1rem solid var(--border-inverted);
+        border-bottom: 1rem solid var(--border-inverted);
+      }
+    }
+
+    &:nth-child(3n) {
+      @include mobile {
+        border-right: 1rem solid var(--border-inverted);
+      }
+    }
+
+    &:nth-child(2n) {
+      @include mobile {
+        border-bottom: 1rem solid var(--border-inverted);
+      }
+    }
+  
+    &:last-child {
+      @include mobile {
+        border-bottom: none;
+      }
+    }
+
+
+    &-image {
+      width: auto;
+      height: 31rem;
+
+      @include mobile {
+        height: 20rem;
+        max-width: 84rem;
+      }
+
+      & img {
+        object-fit: contain;
+      }
+    }
+  }
+}
